@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */ // delete this line after adding user API calls
 // Context API Docs: https://beta.reactjs.org/learn/passing-data-deeply-with-context
 
 import React, {
@@ -22,9 +23,20 @@ const AuthProvider = (props) => {
   // an object/value = user is logged in
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((fbUser) => {
+    firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
-        setUser(fbUser);
+        await getUser(fbUser.uid).then(async (response) => {
+          if (!response) {
+            const userCreate = {
+              uid: fbUser.uid,
+              userName: fbUser.displayName,
+              userImage: fbUser.photoURL,
+            };
+            await addUser(userCreate).then(() => setUser(fbUser));
+          } else {
+            setUser(fbUser);
+          }
+        });
       } else {
         setUser(false);
       }
