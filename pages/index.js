@@ -1,8 +1,11 @@
-import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+import { useRouter } from 'next/router';
+import { Button, FormControl } from 'react-bootstrap';
 
 function Home() {
-  const { user } = useAuth();
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/albumPreview');
+  };
 
   return (
     <div
@@ -14,11 +17,9 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={signOut}>
-        Sign Out
-      </button>
+      <p>Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
+      <FormControl type="text" placeholder="Enter Album Name" />
+      <Button variant="primary" onclick={handleClick}>Play Record</Button>
     </div>
   );
 }
