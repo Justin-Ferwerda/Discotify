@@ -8,7 +8,8 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { firebase } from '../client';
+/* import { addUser, getUser } from '../../api/userData';
+ */import { firebase } from '../client';
 
 const AuthContext = createContext();
 
