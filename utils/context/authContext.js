@@ -17,6 +17,12 @@ AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName
 const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
 
+  const date = () => {
+    const d = new Date();
+    const dateValue = d.toLocaleString();
+    return dateValue;
+  };
+
   // there are 3 states for the user:
   // null = application initial state, not yet loaded
   // false = user is not logged in, but the app has loaded
@@ -31,6 +37,8 @@ const AuthProvider = (props) => {
               uid: fbUser.uid,
               userName: fbUser.displayName,
               userImage: fbUser.photoURL,
+              memberSince: date(),
+              favoriteGenre: '',
             };
             await addUser(userCreate).then(() => setUser(fbUser));
           } else {

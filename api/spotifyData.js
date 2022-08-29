@@ -1,6 +1,11 @@
 import axios from 'axios';
 import spotifyAuth from '../utils/spotifyAuth';
 
+const capitalizeAlbum = (albumName) => {
+  const words = albumName.split(' ');
+  return words.map((word) => word[0].toUpperCase() + word.substring(1)).join(' ');
+};
+
 const spotify = () => new Promise((resolve, reject) => {
   axios('https://accounts.spotify.com/api/token', {
     headers: {
@@ -14,7 +19,8 @@ const spotify = () => new Promise((resolve, reject) => {
 });
 
 const spotifySearch = (token, albumTitle) => new Promise((resolve, reject) => {
-  axios.get(`https://api.spotify.com/v1/search?q=${albumTitle}&type=album`, {
+  const albumName = capitalizeAlbum(albumTitle);
+  axios.get(`https://api.spotify.com/v1/search?q=${albumName}&type=album`, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -33,7 +39,7 @@ const getAlbum = (token, spotifyId) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-  }).then((response) => resolve(response))
+  }).then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
