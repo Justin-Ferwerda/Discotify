@@ -1,7 +1,7 @@
 import axios from 'axios';
 import spotifyAuth from '../utils/spotifyAuth';
 
-const Spotify = () => new Promise((resolve, reject) => {
+const spotify = () => new Promise((resolve, reject) => {
   axios('https://accounts.spotify.com/api/token', {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -26,4 +26,15 @@ const spotifySearch = (token, albumTitle) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { Spotify, spotifySearch };
+const getAlbum = (token, spotifyId) => new Promise((resolve, reject) => {
+  axios.get(`https://api.spotify.com/v1/albums/${spotifyId}`, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
+export { spotify, spotifySearch, getAlbum };

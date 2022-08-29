@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */ // delete this line after adding user API calls
 // Context API Docs: https://beta.reactjs.org/learn/passing-data-deeply-with-context
 
 import React, {
@@ -9,6 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { firebase } from '../client';
+import { getUser, addUser } from '../../api/userData';
 
 const AuthContext = createContext();
 
