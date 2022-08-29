@@ -10,3 +10,5 @@ SpotifyPlayer.propTypes = {
   height: PropTypes.number.isRequired,
   spotifyId: PropTypes.string.isRequired,
 };
+
+export default SpotifyPlayer;
