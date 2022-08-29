@@ -1,0 +1,37 @@
+{
+  "genres": {
+    "rock": {
+      "genreName": "rock"
+    },
+    "pop": {
+      "genreName": "pop"
+    },
+    "blues": {
+      "genreName": "blues"
+    },
+    "jazz": {
+      "genreName": "jazz"
+    },
+    "folk": {
+      "genreName": "folk"
+    },
+    "indie": {
+      "genreName": "indie"
+    },
+    "rap": {
+      "genreName": "rap"
+    },
+    "soul": {
+      "genreName": "soul"
+    },
+    "hiphop": {
+      "genreName": "hip-hop"
+    },
+    "metal": {
+      "genreName": "metal"
+    },
+    "classicrock": {
+      "genreName": "classic rock"
+    }
+  }
+}

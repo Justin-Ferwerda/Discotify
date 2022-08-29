@@ -31,7 +31,6 @@ export default function EditPlayer() {
         spins: 0,
         date: date(),
       };
-      console.warn(object);
       setEditItem(object);
     });
   };
