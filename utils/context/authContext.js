@@ -38,7 +38,6 @@ const AuthProvider = (props) => {
               userName: fbUser.displayName,
               userImage: fbUser.photoURL,
               memberSince: date(),
-              favoriteGenre: '',
             };
             await addUser(userCreate).then(() => setUser(fbUser));
           } else {
