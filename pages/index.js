@@ -1,8 +1,25 @@
-import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+import { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { spotify, spotifySearch } from '../api/spotifyData';
 
 function Home() {
-  const { user } = useAuth();
+  const [formInput, setFormInput] = useState('');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async () => {
+    const token = await spotify();
+    spotifySearch(token, formInput.album).then((response) => (
+      <iframe title="embed" className="embed" src={`https://open.spotify.com/embed/album/${response.id}?utm_source=generator`} width="100%" height="360" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" />
+
+    ));
+  };
 
   return (
     <div
@@ -14,11 +31,13 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={signOut}>
-        Sign Out
-      </button>
+      <p>Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
+      <Form onSubmit={handleSubmit}>
+        <FloatingLabel controlId="floatingInput1" label="Title" className="mb-3">
+          <Form.Control type="text" placeholder="Enter Title" name="title" value={formInput.title} onChange={handleChange} required />
+        </FloatingLabel>
+        <Button type="submit">Play Record</Button>
+      </Form>
     </div>
   );
 }
