@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useAuth } from '..authContext/../../utils/context/authContext';
+import { useAuth } from '../../../utils/context/authContext';
 import { getAlbum, spotify } from '../../../api/spotifyData';
 import AlbumForm from '../../../components/forms/AlbumForm';
 
@@ -16,8 +16,8 @@ export default function EditPlayer() {
     return dateValue;
   };
 
-  useEffect(() => {
-    const token = spotify();
+  const getAlbumInfo = async () => {
+    const token = await spotify();
     getAlbum(token, spotifyId).then((response) => {
       const object = {
         artistName: response.artists[0].name,
@@ -31,9 +31,14 @@ export default function EditPlayer() {
         spins: 0,
         date: date(),
       };
+      console.warn(object);
       setEditItem(object);
     });
-  }, [spotifyId, user]);
+  };
+
+  useEffect(() => {
+    getAlbumInfo();
+  });
 
   return (<AlbumForm obj={editItem} />);
 }
