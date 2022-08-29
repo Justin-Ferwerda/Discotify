@@ -1,7 +1,7 @@
 import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { getAlbum, spotify, spotifySearch } from '../api/spotifyData';
+import { spotify, spotifySearch } from '../api/spotifyData';
 
 function Home() {
   const [formInput, setFormInput] = useState({});
@@ -20,7 +20,6 @@ function Home() {
     const album = formInput.albumName;
     const token = await spotify();
     spotifySearch(token, album).then((response) => {
-      getAlbum(token, response.id).then((albumResponse) => console.warn(albumResponse));
       router.push(`/albumPreview/${response.id}`);
     });
   };
