@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 
 function TracklistModal({ obj }) {
@@ -17,9 +17,9 @@ function TracklistModal({ obj }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{obj.albumName} Tracklist</Modal.Title>
+          <Modal.Title><div className="modalTitle"><i>{obj.albumName}</i> by <u>{obj.artistName}</u> Tracklist</div></Modal.Title>
         </Modal.Header>
-        <Modal.Body>{obj.trackList.map((track) => track.track_number + track.name)}</Modal.Body>
+        <Modal.Body>{obj.trackList.map((track) => <div className="modalTracks"><strong>{track.track_number}.</strong> {track.name}</div>)}</Modal.Body>
       </Modal>
     </>
   );
@@ -29,6 +29,7 @@ TracklistModal.propTypes = {
   obj: PropTypes.shape({
     albumName: PropTypes.string,
     trackList: PropTypes.arrayOf(PropTypes.string),
+    artistName: string,
   }).isRequired,
 };
 

@@ -29,7 +29,7 @@ body {
 }
 
 .albumCard {
-  display: inline-flex;
+  display: inline-block;
 }
 
 .albumCardUserImage {
@@ -39,7 +39,7 @@ body {
 
 .albumName {
   font-style: italic;
-  font-size: smallerß;
+  font-size: smaller;
 }
 
 .cardButtons {
@@ -50,4 +50,9 @@ body {
 
 .artistName {
   text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

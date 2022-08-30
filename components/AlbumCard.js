@@ -27,7 +27,7 @@ function AlbumCard({
         ref={ref}
         style={{ width: '300px', height: '300px', margin: '10px' }}
       >
-        <FrontSide className="cardFront" style={{ }}>
+        <FrontSide className="cardFront">
           <img src={src} alt="album cover" />
         </FrontSide>
         <BackSide className="cardBack" style={{ backgroundColor: '#FFFFFF' }}>
@@ -60,7 +60,7 @@ function AlbumCard({
           </div>
 
         </BackSide>
-      </Flippy>;
+      </Flippy>
     </div>
   );
 }
