@@ -62,7 +62,7 @@ function AlbumForm({ obj }) {
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingSelect" label="Category">
-          <Form.Select aria-label="Genre" name="genre" onChange={handleChange} className="mb-3" value={obj.genre} required>
+          <Form.Select aria-label="Genre" name="genre" onChange={handleChange} className="mb-3" value={formInput?.genre} required>
             <option value="">Select a Genre</option>
             {genres?.map((genre) => (
               <option key={genre.genreName} value={genre.genreName}>
