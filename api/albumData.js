@@ -12,6 +12,17 @@ const createAlbum = (albumObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+const getAlbums = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/albums.json`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
+
 const getUserAlbums = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/albums.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
@@ -44,5 +55,5 @@ const getSingleAlbum = (albumFirebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  createAlbum, updateAlbum, getUserAlbums, deleteSingleAlbum, getSingleAlbum,
+  createAlbum, updateAlbum, getUserAlbums, deleteSingleAlbum, getSingleAlbum, getAlbums,
 };
