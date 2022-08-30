@@ -1,9 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { signOut } from '../utils/auth';
 
 export default function NavBar() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/');
+    signOut();
+  };
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
@@ -25,7 +33,7 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
-            <button type="button" className="btn btn-danger" onClick={signOut}>
+            <button type="button" className="btn btn-danger" onClick={handleClick}>
               Sign Out
             </button>
           </ul>
