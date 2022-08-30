@@ -37,6 +37,12 @@ const deleteSingleAlbum = (firebaseKey) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
+const getSingleAlbum = (albumFirebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/albums/${albumFirebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 export {
-  createAlbum, updateAlbum, getUserAlbums, deleteSingleAlbum,
+  createAlbum, updateAlbum, getUserAlbums, deleteSingleAlbum, getSingleAlbum,
 };

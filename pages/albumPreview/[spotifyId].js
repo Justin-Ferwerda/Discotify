@@ -7,7 +7,7 @@ function AlbumPreview() {
   const { spotifyId } = router.query;
 
   const handleClick = () => {
-    router.push(`/album/edit/${spotifyId}`);
+    router.push(`/album/saveToCollection/${spotifyId}`);
   };
 
   return (
