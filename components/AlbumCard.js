@@ -11,8 +11,8 @@ function AlbumCard({
   src, albumObj, uid, onUpdate, trackList,
 }) {
   const deleteThisAlbum = () => {
-    if (window.confirm(`Delete ${albumObj.albumTitle}?`)) {
-      deleteSingleAlbum(albumObj.firebaseKey).then(() => onUpdate());
+    if (window.confirm(`Delete ${albumObj.albumName}?`)) {
+      deleteSingleAlbum(albumObj.albumFirebaseKey).then(() => onUpdate());
     }
   };
 
@@ -31,7 +31,7 @@ function AlbumCard({
         </FrontSide>
         <BackSide className="cardBack" style={{ backgroundColor: '#FFFFFF' }}>
           <h6>{albumObj.artistName}</h6>
-          <h6>{albumObj.albumTitle}</h6>
+          <h6>{albumObj.albumName}</h6>
           <h6>{albumObj.releaseDate}</h6>
           {/* <div className="tracklist">{trackList}</div> */}
           <iframe title="embed" className="embed" src={`https://open.spotify.com/embed/album/${albumObj.spotifyId}?utm_source=generator`} width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" />
@@ -39,7 +39,7 @@ function AlbumCard({
           <img src={albumObj.creatorImage} alt="headshot" />
           {albumObj.uid === uid ? (
             <>
-              <Link href={`/album/edit/${albumObj.firebaseKey}`} passHref>
+              <Link href={`/album/edit/${albumObj.albumFirebaseKey}`} passHref>
                 <Button variant="outline-secondary">EDIT</Button>
               </Link>
               <Button variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
@@ -47,11 +47,11 @@ function AlbumCard({
               </Button>
             </>
           ) : (
-            <Link href={`/album/wishlist/${albumObj.firebaseKey}`} passHref>
+            <Link href={`/album/wishlist/${albumObj.albumFirebaseKey}`} passHref>
               <Button variant="outline-secondary">Add to Wishlist</Button>
             </Link>
           )}
-          <Link href={`/album/trade/${albumObj.firebaseKey}`} passHref>
+          <Link href={`/album/trade/${albumObj.albumFirebaseKey}`} passHref>
             <Button variant="outline-secondary">TRADE</Button>
           </Link>
         </BackSide>
@@ -66,11 +66,11 @@ AlbumCard.propTypes = {
   uid: PropTypes.string.isRequired,
   albumObj: PropTypes.shape({
     artistName: PropTypes.string,
-    albumTitle: PropTypes.string,
+    albumName: PropTypes.string,
     releaseDate: PropTypes.string,
     spotifyId: PropTypes.string,
     uid: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    albumFirebaseKey: PropTypes.string,
     creatorName: PropTypes.string,
     creatorImage: PropTypes.string,
   }).isRequired,
