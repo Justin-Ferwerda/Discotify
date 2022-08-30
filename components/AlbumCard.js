@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { deleteSingleAlbum } from '../api/albumData';
+import TracklistModal from './TracklistModal';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
-  src, albumObj, uid, onUpdate, trackList,
+  src, albumObj, uid, onUpdate,
 }) {
   const deleteThisAlbum = () => {
     if (window.confirm(`Delete ${albumObj.albumName}?`)) {
@@ -30,6 +31,7 @@ function AlbumCard({
           <img src={src} alt="album cover" />
         </FrontSide>
         <BackSide className="cardBack" style={{ backgroundColor: '#FFFFFF' }}>
+          <TracklistModal className="modal" obj={albumObj} />
           <h6 className="artistName">{albumObj.artistName}</h6>
           <h6 className="albumName">{albumObj.albumName}</h6>
           <h6>released: {albumObj.release_date}</h6>
@@ -41,19 +43,19 @@ function AlbumCard({
             {albumObj.uid === uid ? (
               <>
                 <Link href={`/album/edit/${albumObj.albumFirebaseKey}`} passHref>
-                  <Button variant="outline-secondary">EDIT</Button>
+                  <Button size="sm" variant="outline-secondary">EDIT</Button>
                 </Link>
-                <Button variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
+                <Button size="sm" variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
                   DELETE
                 </Button>
               </>
             ) : (
               <Link href={`/album/wishlist/${albumObj.albumFirebaseKey}`} passHref>
-                <Button variant="outline-secondary">Add to Wishlist</Button>
+                <Button size="sm" variant="outline-secondary">Add to Wishlist</Button>
               </Link>
             )}
             <Link href={`/album/trade/${albumObj.albumFirebaseKey}`} passHref>
-              <Button variant="outline-secondary">TRADE</Button>
+              <Button size="sm" variant="outline-secondary">TRADE</Button>
             </Link>
           </div>
 
