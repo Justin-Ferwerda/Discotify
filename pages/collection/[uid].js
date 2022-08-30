@@ -19,7 +19,7 @@ function MyAlbums() {
   return (
     <div className="myAlbums">
       {albums?.map((album) => (
-        <AlbumCard src={album.recordImage} albumObj={album} uid={uid} />
+        <AlbumCard src={album.recordImage} albumObj={album} uid={uid} onUpdate={getUserAlbums} />
       ))}
     </div>
   );
