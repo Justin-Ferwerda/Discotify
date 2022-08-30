@@ -32,6 +32,9 @@
     },
     "classicrock": {
       "genreName": "classic rock"
+    },
+    "country": {
+      "genreName": "country"
     }
   }
 }

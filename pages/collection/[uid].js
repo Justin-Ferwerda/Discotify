@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getUserAlbums } from '../../api/albumData';
@@ -14,7 +15,7 @@ function MyAlbums() {
 
   useEffect(() => {
     getYourAlbums();
-  });
+  }, []);
 
   return (
     <div className="myAlbums">
