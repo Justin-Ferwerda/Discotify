@@ -12,4 +12,16 @@ const createWishlist = (wishListObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-export default createWishlist;
+const getUserWishlist = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/wishlist.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch((error) => reject(error));
+});
+
+export { createWishlist, getUserWishlist };
