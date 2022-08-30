@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { FloatingLabel, Form } from 'react-bootstrap';
+import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createAlbum, updateAlbum } from '../../api/albumData';
 import getGenres from '../../api/genreData';
@@ -31,12 +31,12 @@ function AlbumForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
-      updateAlbum(formInput, formInput.firebaseKey)
+    if (obj.albumFirebaseKey) {
+      updateAlbum(formInput, formInput.albumFirebaseKey)
         .then(() => router.push(`/collection/${user.uid}`));
     } else {
       const payload = {
-        ...formInput,
+        ...formInput, uid: user.uid,
       };
       createAlbum(payload).then(() => router.push(`/collection/${user.uid}`));
     }
@@ -46,7 +46,7 @@ function AlbumForm({ obj }) {
     <div>
       <Form onSubmit={handleSubmit}>
         <h2 className="text-black mt-5">{
-          obj.firebaseKey ? 'Update' : 'Add'
+          obj.albumFirebaseKey ? 'Update' : 'Add'
 } Album
         </h2>
         <FloatingLabel controlId="floatingInput1" label="Artist Name" className="mb-3">
@@ -71,6 +71,7 @@ function AlbumForm({ obj }) {
             ))}
           </Form.Select>
         </FloatingLabel>
+        <Button type="submit">{obj.albumFirebaseKey ? 'Update' : 'Add'} Album</Button>
       </Form>
     </div>
   );
@@ -78,7 +79,7 @@ function AlbumForm({ obj }) {
 
 AlbumForm.propTypes = {
   obj: PropTypes.shape({
-    firebaseKey: PropTypes.string,
+    albumFirebaseKey: PropTypes.string,
     genre: PropTypes.string,
   }),
 };

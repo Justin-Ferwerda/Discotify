@@ -30,6 +30,7 @@ export default function EditPlayer() {
         creatorImage: user.photoURL,
         spins: 0,
         date: date(),
+        isPublic: false,
       };
       setEditItem(object);
     });
