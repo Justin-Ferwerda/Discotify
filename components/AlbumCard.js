@@ -11,7 +11,7 @@ import createWishlist from '../api/wishListData';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
-  src, albumObj, uid, onUpdate,
+  src, albumObj, onUpdate,
 }) {
   const { user } = useAuth();
   const ref = useRef();
@@ -28,7 +28,7 @@ function AlbumCard({
       uid: user.uid,
     };
     createWishlist(payload);
-    window.confirm(`added ${albumObj.albumName} to your wishlist!`);
+    window.confirm(`added ${albumObj.albumName} by ${albumObj.artistName} to your wishlist!`);
   };
 
   return (
