@@ -19,9 +19,7 @@ function Home() {
     e.preventDefault();
     const album = formInput.albumName;
     const token = await spotify();
-    spotifySearch(token, album).then((response) => {
-      router.push(`/albumPreview/${response.id}`);
-    });
+    spotifySearch(token, album).then((response) => router.push(`/albumPreview/${response.id}`));
   };
 
   return (

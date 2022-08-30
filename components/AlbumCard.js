@@ -7,19 +7,30 @@ import Button from 'react-bootstrap/Button';
 import { deleteSingleAlbum } from '../api/albumData';
 import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
+import createWishlist from '../api/wishListData';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
   src, albumObj, uid, onUpdate,
 }) {
+  const { user } = useAuth();
+  const ref = useRef();
+
   const deleteThisAlbum = () => {
     if (window.confirm(`Delete ${albumObj.albumName}?`)) {
       deleteSingleAlbum(albumObj.albumFirebaseKey).then(() => onUpdate());
     }
   };
 
-  const { user } = useAuth();
-  const ref = useRef();
+  const addToWishlist = () => {
+    const payload = {
+      albumFirebaseKey: albumObj.albumFirebaseKey,
+      uid: user.uid,
+    };
+    createWishlist(payload);
+    window.confirm(`added ${albumObj.albumName} to your wishlist!`);
+  };
+
   return (
     <div className="albumCard">
       <Flippy
@@ -52,9 +63,7 @@ function AlbumCard({
                 </Button>
               </>
             ) : (
-              <Link href={`/album/wishlist/${albumObj.albumFirebaseKey}`} passHref>
-                <Button size="sm" variant="outline-secondary">Add to Wishlist</Button>
-              </Link>
+              <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
             <Link href={`/album/trade/${albumObj.albumFirebaseKey}`} passHref>
               <Button size="sm" variant="outline-secondary">TRADE</Button>
