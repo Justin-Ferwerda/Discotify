@@ -20,3 +20,34 @@ a {
 body {
   background-color: #88effd;
 }
+
+.myAlbums {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  
+}
+
+.albumCard {
+  display: inline-flex;
+}
+
+.albumCardUserImage {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.albumName {
+  font-style: italic;
+  font-size: smallerß;
+}
+
+.cardButtons {
+  display: flex;
+  align-self: flex-end;
+
+}
+
+.artistName {
+  text-decoration: underline;
+}

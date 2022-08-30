@@ -30,30 +30,33 @@ function AlbumCard({
           <img src={src} alt="album cover" />
         </FrontSide>
         <BackSide className="cardBack" style={{ backgroundColor: '#FFFFFF' }}>
-          <h6>{albumObj.artistName}</h6>
-          <h6>{albumObj.albumName}</h6>
-          <h6>{albumObj.releaseDate}</h6>
+          <h6 className="artistName">{albumObj.artistName}</h6>
+          <h6 className="albumName">{albumObj.albumName}</h6>
+          <h6>released: {albumObj.release_date}</h6>
           {/* <div className="tracklist">{trackList}</div> */}
           <iframe title="embed" className="embed" src={`https://open.spotify.com/embed/album/${albumObj.spotifyId}?utm_source=generator`} width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" />
           <h6>{albumObj.creatorName}</h6>
-          <img src={albumObj.creatorImage} alt="headshot" />
-          {albumObj.uid === uid ? (
-            <>
-              <Link href={`/album/edit/${albumObj.albumFirebaseKey}`} passHref>
-                <Button variant="outline-secondary">EDIT</Button>
+          <img className="albumCardUserImage" src={albumObj.creatorImage} alt="headshot" />
+          <div className="cardButtons">
+            {albumObj.uid === uid ? (
+              <>
+                <Link href={`/album/edit/${albumObj.albumFirebaseKey}`} passHref>
+                  <Button variant="outline-secondary">EDIT</Button>
+                </Link>
+                <Button variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
+                  DELETE
+                </Button>
+              </>
+            ) : (
+              <Link href={`/album/wishlist/${albumObj.albumFirebaseKey}`} passHref>
+                <Button variant="outline-secondary">Add to Wishlist</Button>
               </Link>
-              <Button variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
-                DELETE
-              </Button>
-            </>
-          ) : (
-            <Link href={`/album/wishlist/${albumObj.albumFirebaseKey}`} passHref>
-              <Button variant="outline-secondary">Add to Wishlist</Button>
+            )}
+            <Link href={`/album/trade/${albumObj.albumFirebaseKey}`} passHref>
+              <Button variant="outline-secondary">TRADE</Button>
             </Link>
-          )}
-          <Link href={`/album/trade/${albumObj.albumFirebaseKey}`} passHref>
-            <Button variant="outline-secondary">TRADE</Button>
-          </Link>
+          </div>
+
         </BackSide>
       </Flippy>;
     </div>
@@ -67,7 +70,7 @@ AlbumCard.propTypes = {
   albumObj: PropTypes.shape({
     artistName: PropTypes.string,
     albumName: PropTypes.string,
-    releaseDate: PropTypes.string,
+    release_date: PropTypes.string,
     spotifyId: PropTypes.string,
     uid: PropTypes.string,
     albumFirebaseKey: PropTypes.string,
