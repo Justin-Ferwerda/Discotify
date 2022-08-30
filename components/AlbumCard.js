@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { deleteSingleAlbum } from '../api/albumData';
 import TracklistModal from './TracklistModal';
+import { useAuth } from '../utils/context/authContext';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
@@ -17,6 +18,7 @@ function AlbumCard({
     }
   };
 
+  const { user } = useAuth();
   const ref = useRef();
   return (
     <div className="albumCard">
@@ -40,7 +42,7 @@ function AlbumCard({
           <h6>{albumObj.creatorName}</h6>
           <img className="albumCardUserImage" src={albumObj.creatorImage} alt="headshot" />
           <div className="cardButtons">
-            {albumObj.uid === uid ? (
+            {albumObj.uid === user.uid ? (
               <>
                 <Link href={`/album/edit/${albumObj.albumFirebaseKey}`} passHref>
                   <Button size="sm" variant="outline-secondary">EDIT</Button>
