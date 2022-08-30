@@ -38,7 +38,8 @@ export default function EditPlayer() {
 
   useEffect(() => {
     getAlbumInfo();
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (<AlbumForm obj={editItem} />);
 }

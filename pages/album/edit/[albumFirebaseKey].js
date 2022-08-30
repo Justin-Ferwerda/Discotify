@@ -11,7 +11,7 @@ export default function EditAlbum() {
 
   useEffect(() => {
     getSingleAlbum(albumFirebaseKey).then(setEditItem);
-  }, [albumFirebaseKey, editItem]);
+  }, [albumFirebaseKey]);
 
   return (<AlbumForm obj={editItem} />);
 }
