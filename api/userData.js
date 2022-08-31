@@ -18,4 +18,15 @@ const getUser = (uid) => new Promise((resolve, reject) => {
     .catch((reject));
 });
 
-export { addUser, getUser };
+const getAllUsers = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/users.json`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
+
+export { addUser, getUser, getAllUsers };

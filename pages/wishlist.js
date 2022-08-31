@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { getUserAlbums } from '../api/albumData';
 import getUsersWishList from '../api/mergedData';
@@ -14,7 +15,7 @@ function WishList() {
 
   useEffect(() => {
     userWishList();
-  });
+  }, []);
 
   return (
     <div className="myAlbums">
