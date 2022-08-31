@@ -6,7 +6,6 @@ function UserCard({ userObject }) {
   const router = useRouter();
 
   const handleClick = () => {
-    /* followUser(userObject.uid); */
     router.push(`/collection/${userObject.uid}`);
   };
 
