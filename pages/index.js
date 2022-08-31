@@ -30,11 +30,12 @@ function Home() {
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
+        color: 'white',
       }}
     >
       <p>Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
       <Form onSubmit={handleSubmit}>
-        <Form.Control type="text" placeholder="Enter Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} />
+        <Form.Control type="text" placeholder="Enter Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} required />
         <Button type="submit">Play Album</Button>
       </Form>
     </div>

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { deleteSingleAlbum } from '../api/albumData';
 import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
-import createWishlist from '../api/wishListData';
+import { createWishlist } from '../api/wishListData';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
@@ -44,7 +44,7 @@ function AlbumCard({
           <img src={src} alt="album cover" />
         </FrontSide>
         <BackSide className="cardBack" style={{ backgroundColor: '#FFFFFF' }}>
-          <TracklistModal className="modal" obj={albumObj} />
+          <TracklistModal key={albumObj.albumFirebaseKey} className="modal" obj={albumObj} />
           <h6 className="artistName">{albumObj.artistName}</h6>
           <h6 className="albumName">{albumObj.albumName}</h6>
           <h6>released: {albumObj.release_date}</h6>
@@ -79,7 +79,6 @@ function AlbumCard({
 AlbumCard.propTypes = {
   src: PropTypes.string.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  uid: PropTypes.string.isRequired,
   albumObj: PropTypes.shape({
     artistName: PropTypes.string,
     albumName: PropTypes.string,

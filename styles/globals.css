@@ -22,6 +22,11 @@ body {
   background: url('/images/background.jpg') no-repeat center; 
 }
 
+.sign-in {
+  background-color: beige;
+  color: black;
+}
+
 .myAlbums {
   background-color: white;
   overflow-x: scroll;
