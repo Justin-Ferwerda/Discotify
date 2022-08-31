@@ -1,4 +1,4 @@
-import { getSingleAlbum } from './albumData';
+import { getSingleAlbum, getUserAlbums } from './albumData';
 import { getUserWishlist } from './wishListData';
 
 const getUsersWishList = async (uid) => {
@@ -9,4 +9,10 @@ const getUsersWishList = async (uid) => {
   return albumObjectArray;
 };
 
-export default getUsersWishList;
+const getArtistNames = async (uid) => {
+  const userAlbums = await getUserAlbums(uid);
+  const artistNames = userAlbums.map((album) => album.artistName);
+  return artistNames;
+};
+
+export { getUsersWishList, getArtistNames };
