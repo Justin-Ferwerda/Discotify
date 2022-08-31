@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { getUserAlbums } from '../api/albumData';
-import getUsersWishList from '../api/mergedData';
+import { getUsersWishList } from '../api/mergedData';
 import AlbumCard from '../components/AlbumCard';
 import { useAuth } from '../utils/context/authContext';
 
