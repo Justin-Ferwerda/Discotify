@@ -1,28 +1,29 @@
-import Image, { Button, Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
-function UserCard({ userObject, src }) {
+function UserCard({ userObject }) {
   const router = useRouter();
 
   const handleClick = () => {
     /* followUser(userObject.uid); */
+    router.push(`/collection/${userObject.uid}`);
   };
 
   return (
     <div className="usercard">
       <Card>
         <Card.Body>
-          <Image src={src} layout="fill" />
+          <Card.Img variant="top" src={userObject.userImage} />
           <Card.Title>
-            {userObject.displayName}
+            {userObject.userName}
           </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{userObject.memberSince}</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted"><strong>Member Since: </strong>{userObject.memberSince}</Card.Subtitle>
           <Card.Text>
-            {userObject.favoriteGenre}
+            <strong>Favorite Genre: </strong>{userObject.favoriteGenre}
           </Card.Text>
-          <Button onClick={router.push(`/userCollection[${userObject.uid}]`)}>View Collection</Button>
-          <Button onClick={handleClick}>Follow</Button>
+          <Button onClick={handleClick}>View Collection</Button>
+          <Button>Follow</Button>
         </Card.Body>
       </Card>
     </div>
@@ -30,9 +31,9 @@ function UserCard({ userObject, src }) {
 }
 
 UserCard.propTypes = {
-  src: PropTypes.string.isRequired,
   userObject: PropTypes.shape({
-    displayName: PropTypes.string,
+    userName: PropTypes.string,
+    userImage: PropTypes.string,
     memberSince: PropTypes.string,
     favoriteGenre: PropTypes.string,
     uid: PropTypes.string,
