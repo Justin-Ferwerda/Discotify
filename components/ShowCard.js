@@ -13,7 +13,7 @@ function ShowCard({ showObject }) {
           <Card.Text>
             {showObject.venue.location}
           </Card.Text>
-          <Card.Link href={showObject.offers[0].url}>Buy Tickets</Card.Link>
+          <Card.Link href={showObject.offers[0]?.url} target="_blank">Buy Tickets</Card.Link>
         </Card.Body>
       </Card>
     </div>

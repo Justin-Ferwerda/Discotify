@@ -41,7 +41,7 @@ function Community() {
     <>
       <div className="userCardContainer">
         {users?.map((userObj) => (
-          <UserCard userObject={userObj} />
+          <UserCard key={userObj.firebaseKey} userObject={userObj} />
         ))}
       </div>
       <div className="showFormContainer">
@@ -62,7 +62,7 @@ function Community() {
       </div>
       <div className="showCardContainer">
         {shows?.map((show) => (
-          <ShowCard showObject={show} />
+          <ShowCard key={show.id} showObject={show} />
         ))}
       </div>
     </>
