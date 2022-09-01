@@ -6,22 +6,19 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 
 export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
+  const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { user } = useAuth();
 
-  const handleChange = (event) => {
+  /* const handleChange = (event) => {
     setAuth(event.target.checked);
-  };
+  }; */
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -66,19 +63,6 @@ export default function MenuAppBar() {
               Community
             </Typography>
           </Link>
-
-          <FormGroup>
-            <FormControlLabel
-              control={(
-                <Switch
-                  checked={auth}
-                  onChange={handleChange}
-                  aria-label="login switch"
-                />
-          )}
-              label={auth ? 'Logout' : 'Login'}
-            />
-          </FormGroup>
           {auth && (
             <div>
               <IconButton
