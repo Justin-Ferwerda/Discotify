@@ -44,22 +44,22 @@ export default function MenuAppBar() {
             </IconButton>
           </Link>
           <Link href={`/collection/${user.uid}`} passHref>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }}>
               My Collection
             </Typography>
           </Link>
           <Link href={`/trades/${user.uid}`} passHref>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }}>
               My Trades
             </Typography>
           </Link>
           <Link href="/wishlist" passHref>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }}>
               Wishlist
             </Typography>
           </Link>
           <Link href="/community" passHref>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }}>
               Community
             </Typography>
           </Link>
