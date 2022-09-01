@@ -5,11 +5,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import HomeIcon from '@mui/icons-material/Home';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Link from 'next/link';
+import { Avatar } from '@mui/material';
 import { useAuth } from '../utils/context/authContext';
+import { signOut } from '../utils/auth';
 
 export default function MenuAppBar() {
   const [auth] = React.useState(true);
@@ -73,7 +74,7 @@ export default function MenuAppBar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <Avatar alt={user.displayName} src={user.photoURL} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -90,8 +91,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={signOut}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}
