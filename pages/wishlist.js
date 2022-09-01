@@ -20,7 +20,7 @@ function WishList() {
   return (
     <div className="myAlbums">
       {albums?.map((album) => (
-        <AlbumCard src={album.recordImage} albumObj={album} onUpdate={getUserAlbums} />
+        <AlbumCard key={album.albumFirebaseKey} src={album.recordImage} albumObj={album} onUpdate={getUserAlbums} />
       ))}
     </div>
   );

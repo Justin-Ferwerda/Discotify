@@ -39,32 +39,35 @@ function Community() {
 
   return (
     <>
-      <div className="userCardContainer">
-        {users?.map((userObj) => (
-          <UserCard key={userObj.firebaseKey} userObject={userObj} />
-        ))}
-      </div>
-      <div className="showFormContainer">
-        <Form onSubmit={handleSubmit}>
-          <FloatingLabel controlId="floatingSelect" label="Artist">
-            <Form.Select aria-label="Artist" name="artistName" onChange={handleChange} className="mb-3" value={formInput?.artistName} required>
-              <option value="">Select an Artist</option>
-              {artists?.map((artist) => (
-                <option key={artist} value={artist}>
-                  {artist}
-                </option>
-              ))}
-            </Form.Select>
-          </FloatingLabel>
-          <Button type="submit">Get Upcoming Shows</Button>
-        </Form>
+      <div className="communityPage">
+        <div className="userCardContainer">
+          {users?.map((userObj) => (
+            <UserCard key={userObj.firebaseKey} userObject={userObj} />
+          ))}
+        </div>
+        <div className="showFormContainer">
+          <Form onSubmit={handleSubmit}>
+            <FloatingLabel controlId="floatingSelect" label="Artist">
+              <Form.Select aria-label="Artist" name="artistName" onChange={handleChange} className="mb-3" value={formInput?.artistName} required>
+                <option value="">Select an Artist</option>
+                {artists?.map((artist) => (
+                  <option key={artist} value={artist}>
+                    {artist}
+                  </option>
+                ))}
+              </Form.Select>
+            </FloatingLabel>
+            <Button type="submit">Get Upcoming Shows</Button>
+          </Form>
 
+        </div>
+        <div className="showCardContainer">
+          {shows?.map((show) => (
+            <ShowCard key={show.id} showObject={show} />
+          ))}
+        </div>
       </div>
-      <div className="showCardContainer">
-        {shows?.map((show) => (
-          <ShowCard key={show.id} showObject={show} />
-        ))}
-      </div>
+
     </>
 
   );
