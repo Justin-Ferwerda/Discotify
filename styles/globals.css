@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #fff6ea;
   background: url('/images/background.jpg') no-repeat center; 
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 .myAlbums {
-  background-color: white;
+  background-color: #fff6ea;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -76,4 +76,28 @@ img {
 .navbar {
   background-color: #fff6ea;
   color: black;
+}
+
+.userCard {
+  background-color: #fff6ea;
+  margin-bottom: 8px;
+}
+
+.modalHeader {
+  background-color: #fff6ea;
+}
+
+.tracklist-modal {
+  background-color: #fff6ea;
+}
+
+.showCard {
+  background-color: #fff6ea;
+  margin-bottom: 8px;
+}
+
+.showCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }

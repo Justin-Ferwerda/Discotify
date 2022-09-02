@@ -43,7 +43,7 @@ function AlbumCard({
         <FrontSide className="cardFront">
           <img src={src} alt="album cover" />
         </FrontSide>
-        <BackSide className="cardBack" style={{ backgroundColor: '#FFFFFF' }}>
+        <BackSide className="cardBack" style={{ backgroundColor: '#fff6ea' }}>
           <TracklistModal className="modal" obj={albumObj} />
           <h6 className="artistName">{albumObj.artistName}</h6>
           <h6 className="albumName">{albumObj.albumName}</h6>

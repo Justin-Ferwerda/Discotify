@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 function ShowCard({ showObject }) {
   return (
-    <div className="showcard">
-      <Card>
+    <div className="showCard-container">
+      <Card className="showCard">
         <Card.Body>
           <Card.Title>
             {showObject.starts_at}

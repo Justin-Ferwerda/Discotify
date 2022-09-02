@@ -12,7 +12,7 @@ function UserCard({ userObject }) {
 
   return (
     <div className="usercard">
-      <Card>
+      <Card className="userCard">
         <Card.Body>
           <Avatar alt={userObject.userName} src={userObject.userImage} sx={{ width: 75, height: 75 }} />
           <Card.Title>

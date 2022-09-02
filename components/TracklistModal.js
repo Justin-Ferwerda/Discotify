@@ -16,10 +16,10 @@ function TracklistModal({ obj }) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className="modalHeader" closeButton>
           <Modal.Title><div className="modalTitle"><i>{obj.albumName}</i> by <u>{obj.artistName}</u> Tracklist</div></Modal.Title>
         </Modal.Header>
-        <Modal.Body>{obj.trackList.map((track) => <div className="modalTracks"><strong>{track.track_number}.</strong> {track.name}</div>)}</Modal.Body>
+        <Modal.Body className="tracklist-modal">{obj.trackList.map((track) => <div className="modalTracks"><strong>{track.track_number}.</strong> {track.name}</div>)}</Modal.Body>
       </Modal>
     </>
   );
