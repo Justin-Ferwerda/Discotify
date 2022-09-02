@@ -91,7 +91,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={signOut}>Sign Out</MenuItem>
+                <MenuItem className="signOut-btn" onClick={signOut}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}
