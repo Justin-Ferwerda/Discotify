@@ -2,13 +2,33 @@ import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { Avatar } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { getUserGenres } from '../api/mergedData';
 
 function UserCard({ userObject }) {
   const router = useRouter();
+  const [genre, setGenre] = useState('');
 
   const handleClick = () => {
     router.push(`/collection/${userObject.uid}`);
   };
+
+  const favoriteGenre = (arr) => {
+    const favGenre = arr.sort((a, b) => arr.filter((v) => v === a).length
+  - arr.filter((v) => v === b).length).pop();
+    return favGenre;
+  };
+
+  const getFavoriteGenre = async () => {
+    const genres = await getUserGenres(userObject.uid);
+    return favoriteGenre(genres);
+  };
+
+  useEffect(() => {
+    getFavoriteGenre().then(setGenre);
+    console.warn(genre);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="usercard">
@@ -20,7 +40,7 @@ function UserCard({ userObject }) {
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted"><strong>Member Since: </strong>{userObject.memberSince}</Card.Subtitle>
           <Card.Text>
-            <strong>Favorite Genre: </strong>{userObject.favoriteGenre}
+            <strong>Favorite Genre: {genre} </strong>
           </Card.Text>
           <Button onClick={handleClick}>View Collection</Button>
           <Button>Follow</Button>

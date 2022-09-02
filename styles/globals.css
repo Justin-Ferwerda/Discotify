@@ -28,6 +28,10 @@ body {
   margin-top: 10px;
 }
 
+.signOut-btn {
+  background-color: #fff6ea;
+}
+
 .logo {
   border-radius: 50%;
 }
@@ -70,8 +74,9 @@ img {
 }
 
 .communityPage {
-  display: flex
+  display: flex;
 }
+
 
 .navbar {
   background-color: #fff6ea;
@@ -97,7 +102,7 @@ img {
 }
 
 .showCardContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap; 
 }

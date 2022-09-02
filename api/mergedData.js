@@ -15,4 +15,10 @@ const getArtistNames = async (uid) => {
   return artistNames;
 };
 
-export { getUsersWishList, getArtistNames };
+const getUserGenres = async (uid) => {
+  const userAlbums = await getUserAlbums(uid);
+  const genres = userAlbums.map((album) => album.genre);
+  return genres;
+};
+
+export { getUsersWishList, getArtistNames, getUserGenres };
