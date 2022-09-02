@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { signIn } from '../utils/auth';
 
@@ -13,7 +14,7 @@ function Signin() {
         color: 'white',
       }}
     >
-      <h1>Welcome to Discotify!</h1>
+      <img src="/images/beigelogo.png" alt="logo" className="logo" />
       <button type="button" className="btn btn-primary btn-sm copy-btn sign-in" onClick={signIn}>
         Sign In
       </button>

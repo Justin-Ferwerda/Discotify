@@ -1,6 +1,7 @@
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
+import { Avatar } from '@mui/material';
 
 function UserCard({ userObject }) {
   const router = useRouter();
@@ -13,7 +14,7 @@ function UserCard({ userObject }) {
     <div className="usercard">
       <Card>
         <Card.Body>
-          <Card.Img variant="top" src={userObject.userImage} />
+          <Avatar alt={userObject.userName} src={userObject.userImage} sx={{ width: 75, height: 75 }} />
           <Card.Title>
             {userObject.userName}
           </Card.Title>

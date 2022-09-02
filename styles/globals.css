@@ -23,8 +23,13 @@ body {
 }
 
 .sign-in {
-  background-color: beige;
+  background-color: #fff6ea;
   color: black;
+  margin-top: 10px;
+}
+
+.logo {
+  border-radius: 50%;
 }
 
 .myAlbums {
