@@ -4,11 +4,11 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import HomeIcon from '@mui/icons-material/Home';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Link from 'next/link';
 import { Avatar } from '@mui/material';
+import { Image } from 'mui-image';
 import { useAuth } from '../utils/context/authContext';
 import { signOut } from '../utils/auth';
 
@@ -32,7 +32,7 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className="navbar">
           <Link href="/" passHref>
             <IconButton
               size="large"
@@ -41,7 +41,7 @@ export default function MenuAppBar() {
               aria-label="menu"
               sx={{ mr: 5 }}
             >
-              <HomeIcon />
+              <Image src="/images/navlogo.png" style={{ height: 40, width: 40 }} />
             </IconButton>
           </Link>
           <Link href={`/collection/${user.uid}`} passHref>
