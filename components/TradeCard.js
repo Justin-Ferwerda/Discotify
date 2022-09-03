@@ -15,7 +15,6 @@ function TradeCard({ tradeObj, onUpdate }) {
   const getTradeAlbums = () => {
     getSingleAlbum(tradeObj?.traderAlbumFBKey).then(setOffer);
     getSingleAlbum(tradeObj?.tradeRecipientAlbumFBKey).then(setRequest);
-    console.warn(offer);
   };
 
   const deleteThisTrade = () => {
