@@ -12,4 +12,22 @@ const createTrade = (tradeObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-export default createTrade;
+const getUserTrades = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/trades.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
+
+const deleteSingleTrade = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/trades/${firebaseKey}.json`)
+    .then(() => {
+      getUserTrades(uid).then((tradesArray) => resolve(tradesArray));
+    }).catch((error) => reject(error));
+});
+
+export { createTrade, getUserTrades, deleteSingleTrade };

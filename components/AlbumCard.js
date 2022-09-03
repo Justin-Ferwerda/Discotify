@@ -45,17 +45,17 @@ function AlbumCard({
         </FrontSide>
         <BackSide className="cardBack" style={{ backgroundColor: '#fff6ea' }}>
           <TracklistModal className="modal" obj={albumObj} />
-          <h6 className="artistName">{albumObj.artistName}</h6>
-          <h6 className="albumName">{albumObj.albumName}</h6>
-          <h6>released: {albumObj.release_date}</h6>
+          <h6 className="artistName">{albumObj?.artistName}</h6>
+          <h6 className="albumName">{albumObj?.albumName}</h6>
+          <h6>released: {albumObj?.release_date}</h6>
           {/* <div className="tracklist">{trackList}</div> */}
-          <iframe title="embed" className="embed" src={`https://open.spotify.com/embed/album/${albumObj.spotifyId}?utm_source=generator`} width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" />
-          <h6>{albumObj.creatorName}</h6>
-          <img className="albumCardUserImage" src={albumObj.creatorImage} alt="headshot" />
+          <iframe title="embed" className="embed" src={`https://open.spotify.com/embed/album/${albumObj?.spotifyId}?utm_source=generator`} width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" />
+          <h6>{albumObj?.creatorName}</h6>
+          <img className="albumCardUserImage" src={albumObj?.creatorImage} alt="headshot" />
           <div className="cardButtons">
-            {albumObj.uid === user.uid ? (
+            {albumObj?.uid === user.uid ? (
               <>
-                <Link href={`/album/edit/${albumObj.albumFirebaseKey}`} passHref>
+                <Link href={`/album/edit/${albumObj?.albumFirebaseKey}`} passHref>
                   <Button size="sm" variant="outline-secondary">EDIT</Button>
                 </Link>
                 <Button size="sm" variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
@@ -65,7 +65,7 @@ function AlbumCard({
             ) : (
               <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
-            <Link href={`/trade/${albumObj.albumFirebaseKey}`} passHref>
+            <Link href={`/trade/${albumObj?.albumFirebaseKey}`} passHref>
               <Button size="sm" variant="outline-secondary">TRADE</Button>
             </Link>
           </div>
