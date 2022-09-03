@@ -26,7 +26,6 @@ function UserCard({ userObject }) {
 
   useEffect(() => {
     getFavoriteGenre().then(setGenre);
-    console.warn(genre);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
