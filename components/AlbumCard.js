@@ -65,7 +65,7 @@ function AlbumCard({
             ) : (
               <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
-            <Link href={`/album/trade/${albumObj.albumFirebaseKey}`} passHref>
+            <Link href={`/trade/${albumObj.albumFirebaseKey}`} passHref>
               <Button size="sm" variant="outline-secondary">TRADE</Button>
             </Link>
           </div>

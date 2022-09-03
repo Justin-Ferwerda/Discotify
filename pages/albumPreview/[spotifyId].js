@@ -12,8 +12,8 @@ function AlbumPreview() {
 
   return (
     <div className="albumPreviewPage">
-      <Button onClick={handleClick}>Save To Collection</Button>
       <SpotifyPlayer spotifyId={spotifyId} height={360} />
+      <Button onClick={handleClick}>Save To Collection</Button>
     </div>
 
   );
