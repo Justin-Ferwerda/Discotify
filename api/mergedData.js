@@ -1,5 +1,5 @@
-import { getSingleAlbum, getUserAlbums } from './albumData';
-import { getUserWishlist } from './wishListData';
+import { deleteSingleAlbum, getSingleAlbum, getUserAlbums } from './albumData';
+import { deleteWish, getUserWishlist, getWishByFirebaseKey } from './wishListData';
 
 const getUsersWishList = async (uid) => {
   const userWish = await getUserWishlist(uid);
@@ -21,4 +21,16 @@ const getUserGenres = async (uid) => {
   return genres;
 };
 
-export { getUsersWishList, getArtistNames, getUserGenres };
+const deleteAlbumAndWish = async (albumFirebaseKey) => {
+  const wish = await getWishByFirebaseKey(albumFirebaseKey);
+  console.warn(wish);
+  if (wish.firebaseKey) {
+    deleteWish(wish.firebaseKey).then(deleteSingleAlbum(albumFirebaseKey));
+  } else {
+    deleteSingleAlbum(albumFirebaseKey);
+  }
+};
+
+export {
+  getUsersWishList, getArtistNames, getUserGenres, deleteAlbumAndWish,
+};

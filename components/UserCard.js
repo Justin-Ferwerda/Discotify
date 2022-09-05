@@ -4,10 +4,12 @@ import { useRouter } from 'next/router';
 import { Avatar } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getUserGenres } from '../api/mergedData';
+import { useAuth } from '../utils/context/authContext';
 
 function UserCard({ userObject }) {
   const router = useRouter();
   const [genre, setGenre] = useState('');
+  const { user } = useAuth();
 
   const handleClick = () => {
     router.push(`/collection/${userObject.uid}`);
@@ -41,8 +43,14 @@ function UserCard({ userObject }) {
           <Card.Text>
             <strong>Favorite Genre: {genre} </strong>
           </Card.Text>
-          <Button onClick={handleClick}>View Collection</Button>
-          <Button>Follow</Button>
+          {userObject.uid === user.uid ? (
+            <div />
+          ) : (
+            <div>
+              <Button onClick={handleClick}>View Collection</Button>
+              <Button>Follow</Button>
+            </div>
+          )}
         </Card.Body>
       </Card>
     </div>
