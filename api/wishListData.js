@@ -6,8 +6,8 @@ const dbUrl = clientCredentials.databaseURL;
 const createWishlist = (wishListObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/wishlist.json`, wishListObj)
     .then((response) => {
-      const payload = { albumFirebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/albums/${response.data.name}.json`, payload)
+      const payload = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/wishlist/${response.data.name}.json`, payload)
         .then((patchResponse) => resolve(patchResponse.data));
     }).catch(reject);
 });
@@ -24,4 +24,21 @@ const getUserWishlist = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { createWishlist, getUserWishlist };
+const getWishByFirebaseKey = (albumFirebaseKey, user) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/wishlist.json?orderBy="albumFirebaseKey"&equalTo="${albumFirebaseKey}"`)
+    .then((response) => {
+      const wishObject = Object.values(response.data).filter((wish) => user.uid === wish.uid);
+      resolve(wishObject.shift());
+    })
+    .catch((error) => reject(error));
+});
+
+const deleteWish = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/wishlist/${firebaseKey}.json`)
+    .then(resolve)
+    .catch(reject);
+});
+
+export {
+  createWishlist, getUserWishlist, getWishByFirebaseKey, deleteWish,
+};

@@ -8,7 +8,7 @@ import UserCard from '../../components/UserCard';
 
 function MyAlbums() {
   const router = useRouter();
-  const [albums, setAlbums] = useState();
+  const [albums, setAlbums] = useState([]);
   const [user, setUser] = useState({});
   const { uid } = router.query;
 
@@ -24,7 +24,7 @@ function MyAlbums() {
   useEffect(() => {
     getYourAlbums();
     getUserObject();
-  }, []);
+  }, [albums]);
 
   return (
     <>

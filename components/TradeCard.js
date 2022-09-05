@@ -24,9 +24,13 @@ function TradeCard({ tradeObj, onUpdate }) {
   const swapAlbums = () => {
     const offerAlbum = {
       uid: offer.uid,
+      creatorImage: offer.creatorImage,
+      creatorName: offer.creatorName,
     };
     const requestAlbum = {
       uid: request.uid,
+      creatorImage: request.creatorImage,
+      creatorName: request.creatorName,
     };
     updateAlbum(offerAlbum, request.albumFirebaseKey);
     updateAlbum(requestAlbum, offer.albumFirebaseKey);

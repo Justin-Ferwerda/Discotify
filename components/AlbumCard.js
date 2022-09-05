@@ -1,24 +1,25 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable @next/next/no-img-element */
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { deleteSingleAlbum } from '../api/albumData';
+import { deleteAlbumAndWish } from '../api/mergedData';
 import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
-import { createWishlist } from '../api/wishListData';
+import { createWishlist, deleteWish, getWishByFirebaseKey } from '../api/wishListData';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
-  src, albumObj, onUpdate,
+  src, albumObj, onUpdate, router,
 }) {
   const { user } = useAuth();
   const ref = useRef();
 
   const deleteThisAlbum = () => {
     if (window.confirm(`Delete ${albumObj.albumName}?`)) {
-      deleteSingleAlbum(albumObj.albumFirebaseKey).then(() => onUpdate());
+      deleteAlbumAndWish(albumObj.albumFirebaseKey).then(() => onUpdate());
     }
   };
 
@@ -27,8 +28,14 @@ function AlbumCard({
       albumFirebaseKey: albumObj.albumFirebaseKey,
       uid: user.uid,
     };
+
     createWishlist(payload);
     window.confirm(`added ${albumObj.albumName} by ${albumObj.artistName} to your wishlist!`);
+  };
+
+  const removeFromWishlist = async () => {
+    const wishObject = await getWishByFirebaseKey(albumObj.albumFirebaseKey, user);
+    deleteWish(wishObject.firebaseKey).then(() => onUpdate());
   };
 
   return (
@@ -62,6 +69,8 @@ function AlbumCard({
                   DELETE
                 </Button>
               </>
+            ) : router === '/wishlist' ? (
+              <Button size="sm" variant="outline-secondary" onClick={removeFromWishlist}>Remove From Wishlist</Button>
             ) : (
               <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
@@ -92,6 +101,11 @@ AlbumCard.propTypes = {
   trackList: PropTypes.shape({
     track: PropTypes.string,
   }).isRequired,
+  router: PropTypes.string,
+};
+
+AlbumCard.defaultProps = {
+  router: '',
 };
 
 export default AlbumCard;
