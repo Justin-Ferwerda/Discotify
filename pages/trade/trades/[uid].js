@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getUserTradeRequests, getUserTrades } from '../../../api/tradeData';
@@ -16,8 +17,7 @@ function Trades() {
 
   useEffect(() => {
     getTrades();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [trades]);
 
   return (
     <div className="tradeContainer">
