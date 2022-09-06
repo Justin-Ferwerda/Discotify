@@ -23,7 +23,6 @@ const getUserGenres = async (uid) => {
 
 const deleteAlbumAndWish = async (albumFirebaseKey) => {
   const wish = await getWishByFirebaseKey(albumFirebaseKey);
-  console.warn(wish);
   if (wish?.firebaseKey) {
     deleteWish(wish.firebaseKey).then(deleteSingleAlbum(albumFirebaseKey));
   } else {
