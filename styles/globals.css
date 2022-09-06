@@ -106,3 +106,8 @@ img {
   overflow-y: hidden;
   white-space: nowrap; 
 }
+
+.tradeCard {
+  display: flex;
+  background-color: #fff6ea;
+}

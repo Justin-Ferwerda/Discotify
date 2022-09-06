@@ -17,7 +17,7 @@ function Trades() {
 
   useEffect(() => {
     getTrades();
-  }, [trades]);
+  }, []);
 
   return (
     <div className="tradeContainer">

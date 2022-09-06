@@ -27,7 +27,7 @@ function MyAlbums() {
   useEffect(() => {
     getYourAlbums();
     getUserObject();
-  }, [albums]);
+  }, []);
 
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
