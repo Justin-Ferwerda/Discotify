@@ -41,7 +41,7 @@ function Trade() {
       tradeRecipientAlbumFBKey: tradeObject.albumFirebaseKey,
     };
     createTrade(payload);
-    router.push(`/trade/trades/${user.uid}.js`);
+    router.push(`/trade/trades/${user.uid}`);
   };
 
   return (

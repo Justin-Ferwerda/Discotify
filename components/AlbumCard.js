@@ -60,7 +60,7 @@ function AlbumCard({
           <h6>{albumObj?.creatorName}</h6>
           <img className="albumCardUserImage" src={albumObj?.creatorImage} alt="headshot" />
           <div className="cardButtons">
-            {albumObj?.uid === user.uid ? (
+            {router === `/trade/trades/${user.uid}` ? (<div />) : albumObj?.uid === user.uid ? (
               <>
                 <Link href={`/album/edit/${albumObj?.albumFirebaseKey}`} passHref>
                   <Button size="sm" variant="outline-secondary">EDIT</Button>
