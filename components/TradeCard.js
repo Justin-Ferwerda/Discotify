@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { getSingleAlbum, updateAlbum } from '../api/albumData';
 import AlbumCard from './AlbumCard';
 import { useAuth } from '../utils/context/authContext';
@@ -11,6 +12,7 @@ function TradeCard({ tradeObj, onUpdate }) {
   const [offer, setOffer] = useState();
   const [request, setRequest] = useState();
   const { user } = useAuth();
+  const router = useRouter();
 
   const getTradeAlbums = () => {
     getSingleAlbum(tradeObj?.traderAlbumFBKey).then(setOffer);
@@ -48,9 +50,9 @@ function TradeCard({ tradeObj, onUpdate }) {
 
   return (
     <div className="tradeCard">
-      <AlbumCard key={request?.albumFirebaseKey} src={request?.recordImage} albumObj={request} />
+      <AlbumCard key={request?.albumFirebaseKey} src={request?.recordImage} albumObj={request} router={router.asPath} />
       <SyncAltIcon />
-      <AlbumCard key={offer?.albumFirebaseKey} src={offer?.recordImage} albumObj={offer} />
+      <AlbumCard key={offer?.albumFirebaseKey} src={offer?.recordImage} albumObj={offer} router={router.asPath} />
       {tradeObj.uid === user.uid ? (
         <div>
           <Button onClick={deleteThisTrade}>Rescind Trade</Button>

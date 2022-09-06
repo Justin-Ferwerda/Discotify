@@ -20,14 +20,19 @@ function Trades() {
   }, []);
 
   return (
-    <div className="tradeContainer">
-      {trades?.map((trade) => (
-        <TradeCard tradeObj={trade} onUpdate={getTrades} />
-      ))}
-      {tradeRequests?.map((trade) => (
-        <TradeCard tradeObj={trade} onUpdate={getTrades} />
-      ))}
-    </div>
+    <>
+      <div className="tradeRequestContainer">
+        {trades?.map((trade) => (
+          <TradeCard tradeObj={trade} onUpdate={getTrades} />
+        ))}ß
+      </div>
+      <div className="tradeOfferContainer">
+        {tradeRequests?.map((trade) => (
+          <TradeCard tradeObj={trade} onUpdate={getTrades} />
+        ))}
+      </div>
+    </>
+
   );
 }
 

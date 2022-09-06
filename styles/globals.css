@@ -110,4 +110,5 @@ img {
 .tradeCard {
   display: flex;
   background-color: #fff6ea;
+  margin-bottom: 3px;
 }
