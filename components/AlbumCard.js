@@ -70,13 +70,15 @@ function AlbumCard({
                 </Button>
               </>
             ) : router === '/wishlist' ? (
-              <Button size="sm" variant="outline-secondary" onClick={removeFromWishlist}>Remove From Wishlist</Button>
+              <>
+                <Button size="sm" variant="outline-secondary" onClick={removeFromWishlist}>Remove From Wishlist</Button>
+                <Link href={`/trade/${albumObj?.albumFirebaseKey}`} passHref>
+                  <Button size="sm" variant="outline-secondary">TRADE</Button>
+                </Link>
+              </>
             ) : (
               <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
-            <Link href={`/trade/${albumObj?.albumFirebaseKey}`} passHref>
-              <Button size="sm" variant="outline-secondary">TRADE</Button>
-            </Link>
           </div>
 
         </BackSide>
