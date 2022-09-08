@@ -24,7 +24,7 @@ function Trades() {
       <div className="tradeRequestContainer">
         {trades?.map((trade) => (
           <TradeCard tradeObj={trade} onUpdate={getTrades} />
-        ))}ß
+        ))}
       </div>
       <div className="tradeOfferContainer">
         {tradeRequests?.map((trade) => (
