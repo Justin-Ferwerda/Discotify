@@ -8,7 +8,7 @@ const createTrade = (tradeObj) => new Promise((resolve, reject) => {
     .then((response) => {
       const payload = { tradeFirebaseKey: response.data.name };
       axios.patch(`${dbUrl}/trades/${response.data.name}.json`, payload)
-        .then((patchResponse) => resolve(patchResponse.data));
+        .then(resolve);
     }).catch(reject);
 });
 

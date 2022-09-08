@@ -5,10 +5,10 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { deleteAlbumAndWish } from '../api/mergedData';
 import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
 import { createWishlist, deleteWish, getWishByFirebaseKey } from '../api/wishListData';
+import { deleteAlbumAndWish } from '../api/mergedData';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars

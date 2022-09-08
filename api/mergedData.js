@@ -21,14 +21,13 @@ const getUserGenres = async (uid) => {
   return genres;
 };
 
-const deleteAlbumAndWish = async (albumFirebaseKey) => {
-  const wish = await getWishByFirebaseKey(albumFirebaseKey);
-  if (wish?.firebaseKey) {
-    deleteWish(wish.firebaseKey).then(deleteSingleAlbum(albumFirebaseKey));
-  } else {
-    deleteSingleAlbum(albumFirebaseKey);
-  }
-};
+const deleteAlbumAndWish = (albumFirebaseKey) => new Promise((resolve, reject) => {
+  getWishByFirebaseKey(albumFirebaseKey).then((wishObj) => {
+    deleteWish(wishObj?.firebaseKey)
+      .then(deleteSingleAlbum(albumFirebaseKey)).then(resolve)
+      .catch(reject);
+  });
+});
 
 export {
   getUsersWishList, getArtistNames, getUserGenres, deleteAlbumAndWish,
