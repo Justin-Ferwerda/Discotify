@@ -1,19 +1,25 @@
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 
 function ShowCard({ showObject }) {
+  const dateFormat = () => {
+    const date = new Date(showObject.starts_at);
+    return date.toISOString().substring(0, 10);
+  };
+
   return (
     <div className="showCard-container">
       <Card className="showCard">
         <Card.Body>
           <Card.Title>
-            {showObject.starts_at}
+            {dateFormat()}
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{showObject.venue.name}</Card.Subtitle>
           <Card.Text>
             {showObject.venue.location}
           </Card.Text>
-          <Card.Link href={showObject.offers[0]?.url} target="_blank">Buy Tickets</Card.Link>
+          <Card.Link href={showObject.offers[0]?.url} target="_blank"><LocalActivityIcon className="ticket-icon" />Buy Tickets</Card.Link>
         </Card.Body>
       </Card>
     </div>

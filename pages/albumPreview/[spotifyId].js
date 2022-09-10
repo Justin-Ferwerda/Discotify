@@ -24,7 +24,7 @@ function AlbumPreview() {
   return (
     albums.some((album) => album.spotifyId === spotifyId) ? (
       <div>
-        <h1>Sorry album is already owned, please pick another!</h1>
+        <h2 className="album-owned">Sorry album is already owned, please pick another!</h2>
       </div>
     ) : (
       <div className="albumPreviewPage">

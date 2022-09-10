@@ -28,7 +28,10 @@ function TracklistModal({ obj }) {
 TracklistModal.propTypes = {
   obj: PropTypes.shape({
     albumName: PropTypes.string,
-    trackList: PropTypes.arrayOf(PropTypes.string),
+    trackList: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      track_number: PropTypes.number,
+    })),
     artistName: string,
   }).isRequired,
 };
