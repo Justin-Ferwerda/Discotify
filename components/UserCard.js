@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
@@ -28,8 +29,7 @@ function UserCard({ userObject }) {
 
   useEffect(() => {
     getFavoriteGenre().then(setGenre);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userObject]);
 
   return (
     <div className="usercard">
