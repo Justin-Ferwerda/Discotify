@@ -5,6 +5,9 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
 import { createWishlist, deleteWish, getWishByFirebaseKey } from '../api/wishListData';
@@ -63,11 +66,13 @@ function AlbumCard({
             {router === `/trade/trades/${user.uid}` ? (<div />) : albumObj?.uid === user.uid ? (
               <>
                 <Link href={`/album/edit/${albumObj?.albumFirebaseKey}`} passHref>
-                  <Button size="sm" variant="outline-secondary">EDIT</Button>
+                  <IconButton aria-label="edit" className="edit-btn">
+                    <EditIcon style={{ color: 'black' }} />
+                  </IconButton>
                 </Link>
-                <Button size="sm" variant="outline-danger" onClick={deleteThisAlbum} className="m-2">
-                  DELETE
-                </Button>
+                <IconButton aria-label="delete" className="delete-btn " onClick={deleteThisAlbum}>
+                  <DeleteIcon style={{ color: 'black' }} />
+                </IconButton>
               </>
             ) : router === '/wishlist' ? (
               <>
@@ -88,7 +93,7 @@ function AlbumCard({
 }
 
 AlbumCard.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   onUpdate: PropTypes.func,
   albumObj: PropTypes.shape({
     artistName: PropTypes.string,
@@ -109,6 +114,7 @@ AlbumCard.propTypes = {
 AlbumCard.defaultProps = {
   router: '',
   onUpdate: null,
+  src: '',
 };
 
 export default AlbumCard;

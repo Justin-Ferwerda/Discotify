@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Orelega+One&display=swap');
 
 html,
 body {
@@ -6,6 +7,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Orelega One', cursive;
 }
 
 a {
@@ -48,20 +51,30 @@ body {
   display: inline-block;
 }
 
+.cardBack {
+  display: flex;
+  flex-direction: column;
+}
+
 .albumCardUserImage {
   border-radius: 50%;
   width: 45px;
 }
 
 .albumName {
-  font-style: italic;
   font-size: smaller;
+}
+
+.search {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: fit-content;
 }
 
 .cardButtons {
   display: flex;
   align-self: flex-end;
-
+  justify-self: end;
 }
 
 .artistName {
@@ -75,17 +88,23 @@ img {
 
 .communityPage {
   display: flex;
+  justify-content: center;
 }
 
 
 .navbar {
   background-color: #fff6ea;
   color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Orelega One', cursive;
 }
 
 .userCard {
   background-color: #fff6ea;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  width: 350px;
+  margin-right: 10px;
 }
 
 .modalHeader {
@@ -97,18 +116,46 @@ img {
 }
 
 .showCard {
+  display: inline-block;
   background-color: #fff6ea;
   margin-bottom: 8px;
+  width: 300px;
 }
 
 .showCardContainer {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap; 
+  margin-left: 30px;
+  margin-top: 4px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: nowrap;
+  height: 650px;
 }
 
 .tradeCard {
   display: flex;
   background-color: #fff6ea;
   margin-bottom: 3px;
+}
+
+.welcome-message {
+  background-color: #fff6ea;
+  color: black;
+  
+}
+
+.album-owned {
+  background-color: #fff6ea;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.showFormContainer {
+  margin-top: 4px;
+  margin-left: 30px;
+  margin-right: 30 px;
+}
+
+.ticket-icon {
+  margin-right: 2px;
 }

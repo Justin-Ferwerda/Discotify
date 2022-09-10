@@ -31,10 +31,9 @@ function Home() {
         maxWidth: '400px',
         margin: '0 auto',
         color: 'white',
-        backgroundColor: 'fff6ea',
       }}
     >
-      <p>Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
+      <p className="welcome-message">Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
       <Form onSubmit={handleSubmit}>
         <Form.Control type="text" placeholder="Enter Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} required />
         <Button type="submit">Play Album</Button>
