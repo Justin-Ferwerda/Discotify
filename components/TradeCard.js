@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import PropTypes from 'prop-types';
@@ -9,18 +10,20 @@ import { useAuth } from '../utils/context/authContext';
 import { deleteSingleTrade } from '../api/tradeData';
 
 function TradeCard({ tradeObj, onUpdate }) {
-  const [offer, setOffer] = useState();
-  const [request, setRequest] = useState();
+  const [offer, setOffer] = useState({});
+  const [request, setRequest] = useState({});
   const { user } = useAuth();
   const router = useRouter();
 
   const getTradeAlbums = () => {
-    getSingleAlbum(tradeObj?.traderAlbumFBKey).then(setOffer);
-    getSingleAlbum(tradeObj?.tradeRecipientAlbumFBKey).then(setRequest);
+    getSingleAlbum(tradeObj.traderAlbumFBKey).then(setOffer);
+    getSingleAlbum(tradeObj.tradeRecipientAlbumFBKey).then(setRequest);
   };
 
   const deleteThisTrade = () => {
-    deleteSingleTrade(tradeObj?.tradeFirebaseKey).then(() => onUpdate());
+    deleteSingleTrade(tradeObj.tradeFirebaseKey).then(() => {
+      onUpdate();
+    });
   };
 
   const swapAlbums = () => {
@@ -45,8 +48,7 @@ function TradeCard({ tradeObj, onUpdate }) {
 
   useEffect(() => {
     getTradeAlbums();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [tradeObj]);
 
   return (
     <div className="tradeCard">
