@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -45,10 +46,11 @@ function UserCard({ userObject }) {
           </Card.Text>
           {userObject.uid === user.uid ? (
             <div />
+          ) : router.asPath === `/collection/${userObject.uid}` ? (
+            <div />
           ) : (
             <div>
               <Button onClick={handleClick}>View Collection</Button>
-              <Button>Follow</Button>
             </div>
           )}
         </Card.Body>

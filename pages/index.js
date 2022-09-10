@@ -31,6 +31,7 @@ function Home() {
         maxWidth: '400px',
         margin: '0 auto',
         color: 'white',
+        backgroundColor: 'fff6ea',
       }}
     >
       <p>Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
