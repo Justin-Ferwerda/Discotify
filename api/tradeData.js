@@ -34,11 +34,10 @@ const getUserTradeRequests = (uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteSingleTrade = (firebaseKey, uid) => new Promise((resolve, reject) => {
+const deleteSingleTrade = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/trades/${firebaseKey}.json`)
-    .then(() => {
-      getUserTrades(uid).then((tradesArray) => resolve(tradesArray));
-    }).catch((error) => reject(error));
+    .then(resolve)
+    .catch((error) => reject(error));
 });
 
 export {

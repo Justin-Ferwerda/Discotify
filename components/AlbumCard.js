@@ -89,7 +89,7 @@ function AlbumCard({
 
 AlbumCard.propTypes = {
   src: PropTypes.string.isRequired,
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
   albumObj: PropTypes.shape({
     artistName: PropTypes.string,
     albumName: PropTypes.string,
@@ -108,6 +108,7 @@ AlbumCard.propTypes = {
 
 AlbumCard.defaultProps = {
   router: '',
+  onUpdate: null,
 };
 
 export default AlbumCard;
