@@ -1,13 +1,16 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { getAlbums } from '../../api/albumData';
+import { getAlbumBySpotifyId, getAlbums } from '../../api/albumData';
 import SpotifyPlayer from '../../components/SpotifyPlayer';
+import { useAuth } from '../../utils/context/authContext';
+import { createWishlist } from '../../api/wishListData';
 
 function AlbumPreview() {
   const router = useRouter();
   const { spotifyId } = router.query;
   const [albums, setAlbums] = useState([]);
+  const { user } = useAuth();
 
   const handleClick = () => {
     router.push(`/album/saveToCollection/${spotifyId}`);
@@ -17,6 +20,20 @@ function AlbumPreview() {
     getAlbums().then(setAlbums);
   };
 
+  const addWishlist = () => {
+    getAlbumBySpotifyId(spotifyId).then((album) => {
+      console.warn(album);
+      const payload = {
+        albumFirebaseKey: album.albumFirebaseKey,
+        uid: user.uid,
+      };
+
+      createWishlist(payload);
+      window.confirm(`added ${album.albumName} by ${album.artistName} to your wishlist!`);
+      router.push('/');
+    });
+  };
+
   useEffect(() => {
     setState();
   }, []);
@@ -24,7 +41,9 @@ function AlbumPreview() {
   return (
     albums.some((album) => album.spotifyId === spotifyId) ? (
       <div>
-        <h2 className="album-owned">Sorry album is already owned, please pick another!</h2>
+        <h2 className="album-owned">Sorry album is already owned, would you like to add this album to your wishlist?</h2>
+        <Button onClick={addWishlist}>Yes</Button>
+        <Button onClick={() => router.push('/')}>Maybe Later</Button>
       </div>
     ) : (
       <div className="albumPreviewPage">

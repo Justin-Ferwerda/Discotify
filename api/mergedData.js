@@ -25,7 +25,6 @@ const getUserGenres = async (uid) => {
 const deleteAlbumTrades = (albumFirebaseKey) => new Promise((resolve, reject) => {
   getAllTrades().then((tradesArray) => {
     const albumTrades = tradesArray.filter((trade) => trade.traderAlbumFBKey === albumFirebaseKey || trade.tradeRecipientAlbumFBKey === albumFirebaseKey);
-    console.warn(albumTrades);
     const deletedTrades = albumTrades.map((trade) => deleteSingleTrade(trade.tradeFirebaseKey));
     Promise.all(deletedTrades).then(() => {
       deleteSingleAlbum(albumFirebaseKey).then(resolve);
