@@ -27,7 +27,11 @@ const getUserWishlist = (uid) => new Promise((resolve, reject) => {
 const getWishByFirebaseKey = (albumFirebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/wishlist.json?orderBy="albumFirebaseKey"&equalTo="${albumFirebaseKey}"`)
     .then((response) => {
-      resolve(Object.values(response.data).shift());
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
     })
     .catch((error) => reject(error));
 });

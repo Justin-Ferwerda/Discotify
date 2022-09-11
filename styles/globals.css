@@ -75,6 +75,7 @@ body {
   display: flex;
   align-self: flex-end;
   justify-self: end;
+  padding: 3px;
 }
 
 .artistName {
