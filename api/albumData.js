@@ -54,6 +54,12 @@ const getSingleAlbum = (albumFirebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAlbumBySpotifyId = (spotifyId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/albums.json?orderBy="spotifyId"&equalTo="${spotifyId}"`)
+    .then((response) => resolve(Object.values(response.data).shift()))
+    .catch((error) => reject(error));
+});
+
 export {
-  createAlbum, updateAlbum, getUserAlbums, deleteSingleAlbum, getSingleAlbum, getAlbums,
+  createAlbum, updateAlbum, getUserAlbums, deleteSingleAlbum, getSingleAlbum, getAlbums, getAlbumBySpotifyId,
 };
