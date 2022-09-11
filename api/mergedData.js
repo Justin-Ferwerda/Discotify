@@ -22,11 +22,12 @@ const getUserGenres = async (uid) => {
 };
 
 const deleteAlbumAndWish = (albumFirebaseKey) => new Promise((resolve, reject) => {
-  getWishByFirebaseKey(albumFirebaseKey).then((wishObj) => {
-    deleteWish(wishObj?.firebaseKey)
-      .then(deleteSingleAlbum(albumFirebaseKey)).then(resolve)
-      .catch(reject);
-  });
+  getWishByFirebaseKey(albumFirebaseKey).then((wishArray) => {
+    const deletedWishes = wishArray.map((wish) => deleteWish(wish.firebaseKey));
+    Promise.all(deletedWishes).then(() => {
+      deleteSingleAlbum(albumFirebaseKey).then(resolve);
+    });
+  }).catch((error) => reject(error));
 });
 
 export {
