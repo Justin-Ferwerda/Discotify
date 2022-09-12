@@ -38,8 +38,8 @@ function AlbumCard({
   };
 
   const removeFromWishlist = async () => {
-    const wishObject = await getWishByFirebaseKey(albumObj.albumFirebaseKey, user);
-    deleteWish(wishObject.firebaseKey).then(() => onUpdate());
+    const wishObject = await getWishByFirebaseKey(albumObj?.albumFirebaseKey);
+    deleteWish(wishObject.shift().firebaseKey).then(() => onUpdate());
   };
 
   return (
@@ -80,7 +80,7 @@ function AlbumCard({
                   <Button size="sm" className="trade-btn" variant="outline-secondary">TRADE</Button>
                 </Link>
               </>
-            ) : (
+            ) : router === `/trade/${albumObj?.albumFirebaseKey}` ? (<div />) : (
               <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
           </div>

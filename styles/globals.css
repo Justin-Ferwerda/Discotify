@@ -218,6 +218,39 @@ img {
   border-color: #fff6ea;
 }
 
+.rescind-trade-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;
+}
+
+.rescind-trade-btn:hover {
+  background-color: brown;
+  border-color: #fff6ea;
+}
+
+.approve-trade-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;
+}
+
+.approve-trade-btn:hover {
+  background-color: brown;
+  border-color: #fff6ea;
+}
+
+.deny-trade-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;
+}
+
+.deny-trade-btn:hover {
+  background-color: brown;
+  border-color: #fff6ea;
+}
+
 .preview-player {
   margin-top: 150px;
 }
