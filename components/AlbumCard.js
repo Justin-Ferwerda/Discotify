@@ -12,6 +12,7 @@ import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
 import { createWishlist, deleteWish, getWishByFirebaseKey } from '../api/wishListData';
 import { deleteAlbumAndWish } from '../api/mergedData';
+import SpotifyPlayer from './SpotifyPlayer';
 
 function AlbumCard({
   // eslint-disable-next-line no-unused-vars
@@ -58,9 +59,7 @@ function AlbumCard({
           <h6 className="artistName">{albumObj?.artistName}</h6>
           <h6 className="albumName">{albumObj?.albumName}</h6>
           <h6>released: {albumObj?.release_date}</h6>
-          {/* <div className="tracklist">{trackList}</div> */}
-          <iframe title="embed" className="embed" src={`https://open.spotify.com/embed/album/${albumObj?.spotifyId}?utm_source=generator`} width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" />
-          <h6>{albumObj?.creatorName}</h6>
+          <SpotifyPlayer height={80} spotifyId={albumObj?.spotifyId} />
           <img className="albumCardUserImage" src={albumObj?.creatorImage} alt="headshot" />
           <div className="cardButtons">
             {router === `/trade/trades/${user.uid}` ? (<div />) : albumObj?.uid === user.uid ? (
@@ -76,9 +75,9 @@ function AlbumCard({
               </>
             ) : router === '/wishlist' ? (
               <>
-                <Button size="sm" variant="outline-secondary" onClick={removeFromWishlist}>Remove From Wishlist</Button>
+                <Button size="sm" className="remove-wishlist-btn" variant="outline-secondary" onClick={removeFromWishlist}>Remove From Wishlist</Button>
                 <Link href={`/trade/${albumObj?.albumFirebaseKey}`} passHref>
-                  <Button size="sm" variant="outline-secondary">TRADE</Button>
+                  <Button size="sm" className="trade-btn" variant="outline-secondary">TRADE</Button>
                 </Link>
               </>
             ) : (

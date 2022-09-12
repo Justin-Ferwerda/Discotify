@@ -11,7 +11,7 @@ function TracklistModal({ obj }) {
 
   return (
     <>
-      <Button size="sm" variant="outline-info" onClick={handleShow}>
+      <Button size="sm" className="trackList-btn" variant="outline-secondary" onClick={handleShow}>
         view Tracklist
       </Button>
 
