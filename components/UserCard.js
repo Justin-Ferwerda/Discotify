@@ -50,7 +50,7 @@ function UserCard({ userObject }) {
             <div />
           ) : (
             <div>
-              <Button onClick={handleClick}>View Collection</Button>
+              <Button className="view-collection-btn" variant="outline-secondary" onClick={handleClick}>View Collection</Button>
             </div>
           )}
         </Card.Body>

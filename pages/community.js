@@ -57,7 +57,7 @@ function Community() {
                 ))}
               </Form.Select>
             </FloatingLabel>
-            <Button type="submit">Get Upcoming Shows</Button>
+            <Button className="shows-btn" type="submit">Get Upcoming Shows</Button>
           </Form>
 
         </div>

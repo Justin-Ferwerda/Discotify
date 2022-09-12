@@ -27,8 +27,14 @@ body {
 
 .sign-in {
   background-color: #fff6ea;
-  color: black;
+  color: brown;
   margin-top: 10px;
+  border-color: brown;
+}
+
+.sign-in:hover {
+  background-color: brown;
+  border-color: #fff6ea;
 }
 
 .signOut-btn {
@@ -58,7 +64,8 @@ body {
 
 .albumCardUserImage {
   border-radius: 50%;
-  width: 45px;
+  width: 50px;
+  margin-top: 4px;
 }
 
 .albumName {
@@ -159,4 +166,58 @@ img {
 
 .ticket-icon {
   margin-right: 2px;
+}
+
+.play-album-btn {
+  margin-top: 6px;
+  background-color: #fff6ea;
+  color: black;
+  border-color: #fff6ea;
+}
+
+.play-album-btn:hover {
+  background-color: brown;
+  color: white;
+  border-color: #fff6ea;
+}
+
+.remove-wishlist-btn:hover {
+  background-color: brown;
+}
+
+.trade-btn:hover {
+  background-color: brown;
+}
+
+.trackList-btn:hover {
+  background-color: brown;
+}
+
+.view-collection-btn:hover {
+  background-color: brown;
+}
+
+.shows-btn {
+  background-color: #fff6ea;
+  color: black;
+}
+
+.shows-btn:hover {
+  background-color: brown;
+  border-color: #fff6ea;
+}
+
+.save-to-collection-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;
+}
+
+.save-to-collection-btn:hover {
+  background-color: brown;
+  border-color: #fff6ea;
+}
+
+.preview-player {
+  margin-top: 150px;
 }
