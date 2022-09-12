@@ -10,7 +10,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import TracklistModal from './TracklistModal';
 import { useAuth } from '../utils/context/authContext';
-import { createWishlist, deleteWish, getWishByFirebaseKey } from '../api/wishListData';
+import {
+  createWishlist, deleteWish, getUserWishlist,
+} from '../api/wishListData';
 import { deleteAlbumAndWish } from '../api/mergedData';
 import SpotifyPlayer from './SpotifyPlayer';
 
@@ -38,8 +40,9 @@ function AlbumCard({
   };
 
   const removeFromWishlist = async () => {
-    const wishObject = await getWishByFirebaseKey(albumObj?.albumFirebaseKey);
-    deleteWish(wishObject.shift().firebaseKey).then(() => onUpdate());
+    const wishList = await getUserWishlist(user.uid);
+    const wishToRemove = wishList.filter((wish) => wish.albumFirebaseKey === albumObj?.albumFirebaseKey);
+    deleteWish(wishToRemove[0].firebaseKey).then(() => onUpdate());
   };
 
   return (
