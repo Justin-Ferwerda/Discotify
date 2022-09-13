@@ -3,6 +3,8 @@ import React from 'react';
 import { signIn } from '../utils/auth';
 
 function Signin() {
+  document.title = 'Discotify';
+
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
