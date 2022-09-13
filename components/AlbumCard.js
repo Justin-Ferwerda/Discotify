@@ -29,14 +29,18 @@ function AlbumCard({
     }
   };
 
-  const addToWishlist = () => {
-    const payload = {
-      albumFirebaseKey: albumObj.albumFirebaseKey,
-      uid: user.uid,
-    };
-
-    createWishlist(payload);
-    window.confirm(`added ${albumObj.albumName} by ${albumObj.artistName} to your wishlist!`);
+  const addToWishlist = async () => {
+    const wishes = await getUserWishlist(user.uid);
+    if (wishes.filter((wish) => wish.albumFirebaseKey === albumObj?.albumFirebaseKey).length) {
+      alert('Album already in Wishlist!');
+    } else {
+      const payload = {
+        albumFirebaseKey: albumObj.albumFirebaseKey,
+        uid: user.uid,
+      };
+      createWishlist(payload);
+      window.confirm(`added ${albumObj.albumName} by ${albumObj.artistName} to your wishlist!`);
+    }
   };
 
   const removeFromWishlist = async () => {
