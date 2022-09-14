@@ -200,6 +200,7 @@ img {
 .shows-btn {
   background-color: #fff6ea;
   color: black;
+  border-color: brown;
 }
 
 .shows-btn:hover {
