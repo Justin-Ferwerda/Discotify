@@ -24,11 +24,11 @@ function VideoModal({ trackName, artistName, trackNumber }) {
 
   return (
     <>
-      <div onClick={handleShow}><strong>{trackNumber}.</strong>{trackName}</div>
+      <div className="tracklist-track" onClick={handleShow}><strong>{trackNumber}.</strong>{trackName}</div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header className="modalHeader" closeButton>
-          <Modal.Title><div className="modalTitle">{trackName} by {artistName} Live!</div></Modal.Title>
+          <Modal.Title><div className="modalTitle">{trackName} <u>by</u> {artistName} Live!</div></Modal.Title>
         </Modal.Header>
         <Modal.Body className="tracklist-modal"><YouTube videoId={video?.id?.videoId} opts={{ height: '250', width: '444.44', playerVars: { autoplay: 1 } }} /></Modal.Body>
       </Modal>
