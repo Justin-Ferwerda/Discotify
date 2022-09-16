@@ -6,10 +6,6 @@ import { createAlbum, updateAlbum } from '../../api/albumData';
 import getGenres from '../../api/genreData';
 import { useAuth } from '../../utils/context/authContext';
 
-const initialState = {
-  spins: 0,
-};
-
 function AlbumForm({ obj }) {
   const [formInput, setFormInput] = useState();
   const [genres, setGenres] = useState();
@@ -85,7 +81,7 @@ AlbumForm.propTypes = {
 };
 
 AlbumForm.defaultProps = {
-  obj: initialState,
+  obj: {},
 };
 
 export default AlbumForm;

@@ -15,7 +15,6 @@ function VideoModal({ trackName, artistName, trackNumber }) {
 
   const getTheVideo = () => {
     getVideo(`${trackName} by ${artistName}`).then(setVideo);
-    console.warn(video);
   };
 
   useEffect(() => {
