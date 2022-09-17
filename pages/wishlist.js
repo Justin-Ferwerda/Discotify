@@ -21,8 +21,8 @@ function WishList() {
   return (
     <>
       {albums?.length ? (
-        <div className="myAlbums">
-          {albums?.map((album) => (
+        <div className="myAlbums" id="wishListContainer">
+          {albums.map((album) => (
             <AlbumCard key={album.albumFirebaseKey} src={album.recordImage} albumObj={album} router={router.asPath} onUpdate={userWishList} />
           ))}
         </div>
