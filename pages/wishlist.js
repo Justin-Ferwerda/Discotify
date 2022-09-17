@@ -19,11 +19,18 @@ function WishList() {
   }, []);
 
   return (
-    <div className="myAlbums">
-      {albums?.map((album) => (
-        <AlbumCard key={album.albumFirebaseKey} src={album.recordImage} albumObj={album} router={router.asPath} onUpdate={userWishList} />
-      ))}
-    </div>
+    <>
+      {albums?.length ? (
+        <div className="myAlbums">
+          {albums?.map((album) => (
+            <AlbumCard key={album.albumFirebaseKey} src={album.recordImage} albumObj={album} router={router.asPath} onUpdate={userWishList} />
+          ))}
+        </div>
+      ) : (
+        <div className="noTradesText"><div className="tText">Go to the Community Page to add Albums to Your Wishlist!</div></div>
+      )}
+    </>
+
   );
 }
 

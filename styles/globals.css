@@ -96,7 +96,6 @@ img {
 
 .communityPage {
   display: flex;
-  justify-content: center;
 }
 
 
@@ -258,4 +257,19 @@ img {
 
 .trackList-modal:hover {
   cursor: pointer;
+}
+
+.noTradesText {
+  display: flex;
+  font-size: x-large;
+  height: 90vh;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.tText {
+  background-color: #fff6ea;
+  padding: 20px;
 }
