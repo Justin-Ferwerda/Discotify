@@ -8,6 +8,7 @@ import { getSingleAlbum, updateAlbum } from '../api/albumData';
 import AlbumCard from './AlbumCard';
 import { useAuth } from '../utils/context/authContext';
 import { deleteSingleTrade } from '../api/tradeData';
+import { deleteWish, getWishByFirebaseKey } from '../api/wishListData';
 
 function TradeCard({ tradeObj, onUpdate }) {
   const [offer, setOffer] = useState({});
@@ -42,6 +43,10 @@ function TradeCard({ tradeObj, onUpdate }) {
   };
 
   const approveThisTrade = () => {
+    getWishByFirebaseKey(request.albumFirebaseKey).then((response) => {
+      const wishToDelete = response.filter((wish) => wish.uid === offer.uid);
+      deleteWish(wishToDelete[0].firebaseKey);
+    });
     swapAlbums();
     deleteThisTrade();
   };
