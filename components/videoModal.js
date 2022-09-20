@@ -23,7 +23,7 @@ function VideoModal({ trackName, artistName, trackNumber }) {
 
   return (
     <>
-      <div className="tracklist-track" onClick={handleShow}><strong>{trackNumber}.</strong>{trackName}</div>
+      <div className="tracklist-track" onClick={handleShow}><strong>{trackNumber}. </strong>{trackName}</div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header className="modalHeader" closeButton>

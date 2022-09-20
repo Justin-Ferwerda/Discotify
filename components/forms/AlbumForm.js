@@ -67,7 +67,7 @@ function AlbumForm({ obj }) {
             ))}
           </Form.Select>
         </FloatingLabel>
-        <Button type="submit">{obj.albumFirebaseKey ? 'Update' : 'Add'} Album</Button>
+        <Button className="add-album-btn" type="submit">{obj.albumFirebaseKey ? 'Update' : 'Add'} Album</Button>
       </Form>
     </div>
   );
