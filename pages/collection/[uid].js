@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, FloatingLabel } from 'react-bootstrap';
 import { getUserAlbums } from '../../api/albumData';
+import { getUserAlbumsByGenre, getUserGenres } from '../../api/mergedData';
 import { getUser } from '../../api/userData';
 import AlbumCard from '../../components/AlbumCard';
 import UserCard from '../../components/UserCard';
@@ -11,6 +12,7 @@ function MyAlbums() {
   const router = useRouter();
   const [albums, setAlbums] = useState([]);
   const [user, setUser] = useState({});
+  const [genres, setGenres] = useState([]);
   const { uid } = router.query;
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -24,10 +26,22 @@ function MyAlbums() {
     setUser(Object);
   };
 
+  const getMyGenres = () => {
+    getUserGenres(uid).then(setGenres);
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    getUserAlbumsByGenre(uid, e.target.value).then(setAlbums);
+  };
+
   useEffect(() => {
     getYourAlbums();
     getUserObject();
+    getMyGenres();
   }, []);
+
+  const uniqueGenres = (array) => array.filter((v, i, a) => a.indexOf(v) === i);
 
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
@@ -45,6 +59,16 @@ function MyAlbums() {
       <div className="search">
         <Form.Control icon="search" placeholder="Search Albums" onChange={(e) => searchItems(e.target.value)} />
       </div>
+      <FloatingLabel controlId="floatingSelect" label="Sort">
+        <Form.Select aria-label="Genre" name="genre" onChange={handleChange} className="mb-3" value="" required>
+          <option value="">Sort By Genre</option>
+          {uniqueGenres(genres)?.map((genre) => (
+            <option value={genre}>
+              {genre}
+            </option>
+          ))}
+        </Form.Select>
+      </FloatingLabel>
       <div className="myAlbums">
         {searchInput.length > 1 ? (
           <div>

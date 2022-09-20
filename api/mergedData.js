@@ -22,6 +22,11 @@ const getUserGenres = async (uid) => {
   return genres;
 };
 
+const getUserAlbumsByGenre = async (uid, genre) => {
+  const userAlbums = await getUserAlbums(uid);
+  return userAlbums.filter((album) => album.genre === genre);
+};
+
 const deleteAlbumTrades = (albumFirebaseKey) => new Promise((resolve, reject) => {
   getAllTrades().then((tradesArray) => {
     const albumTrades = tradesArray.filter((trade) => trade.traderAlbumFBKey === albumFirebaseKey || trade.tradeRecipientAlbumFBKey === albumFirebaseKey);
@@ -42,5 +47,5 @@ const deleteAlbumAndWish = (albumFirebaseKey) => new Promise((resolve, reject) =
 });
 
 export {
-  getUsersWishList, getArtistNames, getUserGenres, deleteAlbumAndWish,
+  getUsersWishList, getArtistNames, getUserGenres, deleteAlbumAndWish, getUserAlbumsByGenre,
 };
