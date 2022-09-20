@@ -19,7 +19,13 @@ function Home() {
     e.preventDefault();
     const album = formInput.albumName;
     const token = await spotify();
-    spotifySearch(token, album).then((response) => router.push(`/albumPreview/${response.id}`));
+    spotifySearch(token, album).then((response) => {
+      if (response) {
+        router.push(`/albumPreview/${response.id}`);
+      } else {
+        alert('This record does not appear to be in our collection. Please try a different album!');
+      }
+    });
   };
 
   return (

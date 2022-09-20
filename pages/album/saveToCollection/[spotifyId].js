@@ -10,12 +10,6 @@ export default function EditPlayer() {
   const { user } = useAuth();
   const { spotifyId } = router.query;
 
-  const date = () => {
-    const d = new Date();
-    const dateValue = d.toLocaleString();
-    return dateValue;
-  };
-
   const getAlbumInfo = async () => {
     const token = await spotify();
     getAlbum(token, spotifyId).then((response) => {
@@ -28,9 +22,6 @@ export default function EditPlayer() {
         trackList: response.tracks.items,
         creatorName: user.displayName,
         creatorImage: user.photoURL,
-        spins: 0,
-        date: date(),
-        isPublic: false,
       };
       setEditItem(object);
     });

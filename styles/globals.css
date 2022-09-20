@@ -96,7 +96,6 @@ img {
 
 .communityPage {
   display: flex;
-  justify-content: center;
 }
 
 
@@ -142,7 +141,8 @@ img {
 .tradeCard {
   display: flex;
   background-color: #fff6ea;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .welcome-message {
@@ -181,12 +181,42 @@ img {
   border-color: #fff6ea;
 }
 
+.add-to-wishlist-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown; 
+}
+
+.add-to-wishlist-btn:hover {
+  background-color: brown;
+  color: white;
+  border-color: #fff6ea; 
+}
+
+.remove-wishlist-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;  
+}
+
 .remove-wishlist-btn:hover {
   background-color: brown;
 }
 
+.trade-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;   
+}
+
 .trade-btn:hover {
   background-color: brown;
+}
+
+.trackList-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown;   
 }
 
 .trackList-btn:hover {
@@ -200,6 +230,7 @@ img {
 .shows-btn {
   background-color: #fff6ea;
   color: black;
+  border-color: brown;
 }
 
 .shows-btn:hover {
@@ -224,6 +255,17 @@ img {
   border-color: brown;
 }
 
+.add-album-btn {
+  background-color: #fff6ea;
+  color: black;
+  border-color: brown; 
+}
+
+.add-album-btn:hover {
+  background-color: brown;
+  border-color: #fff6ea; 
+}
+
 .rescind-trade-btn:hover {
   background-color: brown;
   border-color: #fff6ea;
@@ -233,6 +275,7 @@ img {
   background-color: #fff6ea;
   color: black;
   border-color: brown;
+  margin-bottom: 4px;
 }
 
 .approve-trade-btn:hover {
@@ -253,4 +296,23 @@ img {
 
 .preview-player {
   margin-top: 150px;
+}
+
+.trackList-modal:hover {
+  cursor: pointer;
+}
+
+.noTradesText {
+  display: flex;
+  font-size: x-large;
+  height: 90vh;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.tText {
+  background-color: #fff6ea;
+  padding: 20px;
 }

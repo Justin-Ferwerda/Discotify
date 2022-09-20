@@ -21,16 +21,20 @@ function Trades() {
 
   return (
     <>
-      <div className="tradeRequestContainer">
-        {trades?.map((trade) => (
-          <TradeCard tradeObj={trade} onUpdate={getTrades} />
-        ))}
-      </div>
-      <div className="tradeOfferContainer">
-        {tradeRequests?.map((trade) => (
-          <TradeCard tradeObj={trade} onUpdate={getTrades} />
-        ))}
-      </div>
+      {trades.length || tradeRequests.length ? (
+        <>
+          <div className="tradeRequestContainer">
+            {trades?.map((trade) => (
+              <TradeCard tradeObj={trade} onUpdate={getTrades} />
+            ))}
+          </div>
+          <div className="tradeOfferContainer">
+            {tradeRequests?.map((trade) => (
+              <TradeCard tradeObj={trade} onUpdate={getTrades} />
+            ))}
+          </div>
+        </>
+      ) : (<div className="noTradesText"><div className="tText">Looks like you have no trades. Check out the community page to view other people&apos;s collections!</div></div>)}
     </>
 
   );

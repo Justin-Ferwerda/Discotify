@@ -6,10 +6,6 @@ import { createAlbum, updateAlbum } from '../../api/albumData';
 import getGenres from '../../api/genreData';
 import { useAuth } from '../../utils/context/authContext';
 
-const initialState = {
-  spins: 0,
-};
-
 function AlbumForm({ obj }) {
   const [formInput, setFormInput] = useState();
   const [genres, setGenres] = useState();
@@ -71,7 +67,7 @@ function AlbumForm({ obj }) {
             ))}
           </Form.Select>
         </FloatingLabel>
-        <Button type="submit">{obj.albumFirebaseKey ? 'Update' : 'Add'} Album</Button>
+        <Button className="add-album-btn" type="submit">{obj.albumFirebaseKey ? 'Update' : 'Add'} Album</Button>
       </Form>
     </div>
   );
@@ -85,7 +81,7 @@ AlbumForm.propTypes = {
 };
 
 AlbumForm.defaultProps = {
-  obj: initialState,
+  obj: {},
 };
 
 export default AlbumForm;

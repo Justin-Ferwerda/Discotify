@@ -88,7 +88,7 @@ function AlbumCard({
                 </Link>
               </>
             ) : router === `/trade/${albumObj?.albumFirebaseKey}` ? (<div />) : (
-              <Button size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
+              <Button className="add-to-wishlist-btn" size="sm" variant="outline-secondary" onClick={addToWishlist}>Add to Wishlist</Button>
             )}
           </div>
 
