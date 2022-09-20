@@ -22,7 +22,6 @@ function AlbumPreview() {
 
   const addWishlist = () => {
     getAlbumBySpotifyId(spotifyId).then((album) => {
-      console.warn(album);
       const payload = {
         albumFirebaseKey: album.albumFirebaseKey,
         uid: user.uid,

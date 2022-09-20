@@ -25,12 +25,12 @@ function Trades() {
         <>
           <div className="tradeRequestContainer">
             {trades?.map((trade) => (
-              <TradeCard tradeObj={trade} onUpdate={getTrades} />
+              <TradeCard key={trade.tradeFirebaseKey} tradeObj={trade} onUpdate={getTrades} />
             ))}
           </div>
           <div className="tradeOfferContainer">
             {tradeRequests?.map((trade) => (
-              <TradeCard tradeObj={trade} onUpdate={getTrades} />
+              <TradeCard key={trade.tradeFirebaseKey} tradeObj={trade} onUpdate={getTrades} />
             ))}
           </div>
         </>
