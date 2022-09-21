@@ -57,7 +57,7 @@ function Trade() {
               <option value="">Select an Album From Your Collection to Trade</option>
               {albums?.map((album) => (
                 <option key={album.albumFirebaseKey} value={album.albumFirebaseKey}>
-                  {album.albumName}
+                  {album.albumName} - {album.artistName}
                 </option>
               ))}
             </Form.Select>
