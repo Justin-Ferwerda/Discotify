@@ -13,6 +13,7 @@ function MyAlbums() {
   const [albums, setAlbums] = useState([]);
   const [user, setUser] = useState({});
   const [genres, setGenres] = useState([]);
+  const [selected, setSelected] = useState();
   const { uid } = router.query;
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -31,8 +32,12 @@ function MyAlbums() {
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
-    getUserAlbumsByGenre(uid, e.target.value).then(setAlbums);
+    setSelected(e.target.value);
+    if (e.target.value === 'all-albums') {
+      getUserAlbums(uid).then(setAlbums);
+    } else {
+      getUserAlbumsByGenre(uid, e.target.value).then(setAlbums);
+    }
   };
 
   useEffect(() => {
@@ -59,16 +64,18 @@ function MyAlbums() {
       <div className="search">
         <Form.Control icon="search" placeholder="Search Albums" onChange={(e) => searchItems(e.target.value)} />
       </div>
-      <FloatingLabel controlId="floatingSelect" label="Sort">
-        <Form.Select aria-label="Genre" name="genre" onChange={handleChange} className="mb-3" value="" required>
-          <option value="">Sort By Genre</option>
-          {uniqueGenres(genres)?.map((genre) => (
-            <option value={genre}>
-              {genre}
-            </option>
-          ))}
-        </Form.Select>
-      </FloatingLabel>
+      <div className="sort">
+        <FloatingLabel controlId="floatingSelect" label="Sort">
+          <Form.Select aria-label="Genre" name="genre" onChange={handleChange} className="mb-3" value={selected} required>
+            <option value="all-albums">All Albums</option>
+            {uniqueGenres(genres)?.map((genre) => (
+              <option key={genre} value={genre}>
+                {genre}
+              </option>
+            ))}
+          </Form.Select>
+        </FloatingLabel>
+      </div>
       <div className="myAlbums">
         {searchInput.length > 1 ? (
           <div>
