@@ -75,7 +75,11 @@ body {
 .search {
   margin-bottom: 10px;
   margin-top: 10px;
-  width: fit-content;
+  width: 350px;
+}
+
+.sort {
+  width: 350px;
 }
 
 .cardButtons {
@@ -298,8 +302,9 @@ img {
   margin-top: 150px;
 }
 
-.trackList-modal:hover {
+.tracklist-track:hover {
   cursor: pointer;
+  color: gray;
 }
 
 .noTradesText {

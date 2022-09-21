@@ -5,7 +5,10 @@ import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 function ShowCard({ showObject }) {
   const dateFormat = () => {
     const date = new Date(showObject.starts_at);
-    return date.toISOString().substring(0, 10);
+    const dateToFormat = date.toISOString().substring(0, 10);
+    const [year, month, day] = dateToFormat.split('-');
+    const formattedDate = [month, day, year].join('/');
+    return formattedDate;
   };
 
   return (
