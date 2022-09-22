@@ -1,6 +1,7 @@
 import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { spotify, spotifySearch } from '../api/spotifyData';
 
 function Home() {
@@ -39,6 +40,10 @@ function Home() {
         color: 'white',
       }}
     >
+      <Head>
+        <title>Discotify - Home</title>
+        <meta name="description" content="meta description for Home Page" />
+      </Head>
       <p className="welcome-message">Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
       <Form onSubmit={handleSubmit}>
         <Form.Control type="text" placeholder="Enter Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} required />

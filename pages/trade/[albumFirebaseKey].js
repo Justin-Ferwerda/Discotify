@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import Head from 'next/head';
 import { getUserAlbums, getSingleAlbum } from '../../api/albumData';
 import { createTrade } from '../../api/tradeData';
 import AlbumCard from '../../components/AlbumCard';
@@ -47,6 +48,10 @@ function Trade() {
 
   return (
     <>
+      <Head>
+        <title>Discotify - Create Trade</title>
+        <meta name="description" content="meta description for Create Trade Page" />
+      </Head>
       <div className="tradeContainer">
         <AlbumCard src={tradeObject.recordImage} albumObj={tradeObject} />
       </div>

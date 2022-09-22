@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Form, FloatingLabel } from 'react-bootstrap';
+import Head from 'next/head';
 import { getUserAlbums } from '../../api/albumData';
 import { getUserAlbumsByGenre, getUserGenres } from '../../api/mergedData';
 import { getUser } from '../../api/userData';
@@ -58,6 +59,10 @@ function MyAlbums() {
 
   return (
     <>
+      <Head>
+        <title>Discotify - My Collection</title>
+        <meta name="description" content="meta description for Collection Page" />
+      </Head>
       <div className="collectionUserCard">
         <UserCard userObject={user} />
       </div>

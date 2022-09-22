@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { useAuth } from '../../../utils/context/authContext';
 import { getAlbum, spotify } from '../../../api/spotifyData';
 import AlbumForm from '../../../components/forms/AlbumForm';
@@ -32,5 +33,13 @@ export default function EditPlayer() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (<AlbumForm obj={editItem} />);
+  return (
+    <>
+      <Head>
+        <title>Discotify - Save Album</title>
+        <meta name="description" content="meta description for Save Page" />
+      </Head>
+      <AlbumForm obj={editItem} />
+    </>
+  );
 }

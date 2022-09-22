@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { getUserTradeRequests, getUserTrades } from '../../../api/tradeData';
 import TradeCard from '../../../components/TradeCard';
 
@@ -21,6 +22,10 @@ function Trades() {
 
   return (
     <>
+      <Head>
+        <title>Discotify - Trades</title>
+        <meta name="description" content="meta description for Trades Page" />
+      </Head>
       {trades.length || tradeRequests.length ? (
         <>
           <div className="tradeRequestContainer">

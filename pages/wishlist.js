@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { getUsersWishList } from '../api/mergedData';
 import AlbumCard from '../components/AlbumCard';
 import { useAuth } from '../utils/context/authContext';
@@ -20,6 +21,10 @@ function WishList() {
 
   return (
     <>
+      <Head>
+        <title>Discotify - Wishlist</title>
+        <meta name="description" content="meta description for Wishlist Page" />
+      </Head>
       {albums?.length ? (
         <div className="myAlbums" id="wishListContainer">
           {albums.map((album) => (
