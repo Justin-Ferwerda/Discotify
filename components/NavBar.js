@@ -9,6 +9,7 @@ import Menu from '@mui/material/Menu';
 import Link from 'next/link';
 import { Avatar } from '@mui/material';
 import { Image } from 'mui-image';
+import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import { signOut } from '../utils/auth';
 
@@ -16,6 +17,7 @@ export default function MenuAppBar() {
   const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { user } = useAuth();
+  const router = useRouter();
 
   /* const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -27,6 +29,11 @@ export default function MenuAppBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const signMeOut = () => {
+    signOut();
+    router.push('/');
   };
 
   return (
@@ -91,7 +98,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem className="signOut-btn" onClick={signOut}>Sign Out</MenuItem>
+                <MenuItem className="signOut-btn" onClick={signMeOut}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}
