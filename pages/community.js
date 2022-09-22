@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import bandsInTown from '../api/bandsInTownData';
@@ -40,6 +41,10 @@ function Community() {
   return (
     <>
       <div className="communityPage">
+        <Head>
+          <title>Discotify - Community</title>
+          <meta name="description" content="meta description for Community Page" />
+        </Head>
         <div className="userCardContainer">
           {users?.map((userObj) => (
             <UserCard key={userObj.firebaseKey} userObject={userObj} />
