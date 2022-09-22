@@ -1,13 +1,13 @@
 # Welcome to Discotify!
 
 Discotify is my frontend capstone project for NSS E-19.
-It was built with Javascript, react and next.js.
+It was built with Javascript, react and Next.js.
 
 My focus on this project was using external data to provide most of the functionality and have it be a very simple user-friendly flow through the app.
 
 ## The Data
 
-I used 3 different external APIs to collect data for Discotify -
+I used 3 external APIs to collect data for Discotify -
 
   * [Spotify](https://developer.spotify.com/) - to get album and track info
   * [Bands In Town](https://artists.bandsintown.com/support/api-installation) - for show data
@@ -84,3 +84,10 @@ const getVideo = (artistAndAlbum) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 ```
+## ERD
+
+![ERD](/public/images/ERD.png)
+
+## Loom Video
+
+[Loom Walkthrough](https://www.loom.com/share/e622aef136794b3e99c83dc90b4baa72)
