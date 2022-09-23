@@ -53,6 +53,22 @@ body {
   
 }
 
+.wishlist-container {
+  background-color: #fff6ea;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-top: 60px;
+}
+
+.wishlist-title {
+  background-color: #fff6ea;
+  margin-top: 5px;
+  padding: 5px;
+  width: fit-content;
+  border-radius: 5%;
+}
+
 .albumCard {
   display: inline-block;
 }
@@ -143,7 +159,7 @@ img {
 }
 
 .tradeCard {
-  display: flex;
+  display: inline-block;
   background-color: #fff6ea;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -152,6 +168,7 @@ img {
 .welcome-message {
   background-color: #fff6ea;
   color: black;
+  padding: 10px;
   
 }
 
@@ -275,11 +292,19 @@ img {
   border-color: #fff6ea;
 }
 
+.trade-btn-container {
+  display: flex;
+  flex-flow: row;
+  margin: 5px;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
 .approve-trade-btn {
   background-color: #fff6ea;
   color: black;
   border-color: brown;
-  margin-bottom: 4px;
+  margin-right: 25px;
 }
 
 .approve-trade-btn:hover {
@@ -291,6 +316,7 @@ img {
   background-color: #fff6ea;
   color: black;
   border-color: brown;
+  width: 140px;
 }
 
 .deny-trade-btn:hover {
@@ -315,6 +341,7 @@ img {
   align-content: center;
   flex-direction: column;
   margin: 0 auto;
+  text-align: center;
 }
 
 .tText {

@@ -35,7 +35,7 @@ function Home() {
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
+        maxWidth: '700px',
         margin: '0 auto',
         color: 'white',
       }}
@@ -44,8 +44,8 @@ function Home() {
         <title>Discotify - Home</title>
         <meta name="description" content="meta description for Home Page" />
       </Head>
-      <p className="welcome-message">Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</p>
-      <Form onSubmit={handleSubmit}>
+      <h4 className="welcome-message">Go ahead and browse our extensive record collection! Enter an album name below and preview your selection!</h4>
+      <Form onSubmit={handleSubmit} className="enter-album-name">
         <Form.Control type="text" placeholder="Enter Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} required />
         <Button className="play-album-btn" type="submit">Play Album</Button>
       </Form>

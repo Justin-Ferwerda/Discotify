@@ -26,20 +26,23 @@ function Trades() {
         <title>Discotify - Trades</title>
         <meta name="description" content="meta description for Trades Page" />
       </Head>
-      {trades.length || tradeRequests.length ? (
-        <>
-          <div className="tradeRequestContainer">
-            {trades?.map((trade) => (
-              <TradeCard key={trade.tradeFirebaseKey} tradeObj={trade} onUpdate={getTrades} />
-            ))}
-          </div>
-          <div className="tradeOfferContainer">
-            {tradeRequests?.map((trade) => (
-              <TradeCard key={trade.tradeFirebaseKey} tradeObj={trade} onUpdate={getTrades} />
-            ))}
-          </div>
-        </>
-      ) : (<div className="noTradesText"><div className="tText">Looks like you have no trades. Check out the community page to view other people&apos;s collections!</div></div>)}
+      <div className="trade-page">
+        {trades.length || tradeRequests.length ? (
+          <>
+            <div className="tradeRequestContainer">
+              {trades?.map((trade) => (
+                <TradeCard key={trade.tradeFirebaseKey} tradeObj={trade} onUpdate={getTrades} />
+              ))}
+            </div>
+            <div className="tradeOfferContainer">
+              {tradeRequests?.map((trade) => (
+                <TradeCard key={trade.tradeFirebaseKey} tradeObj={trade} onUpdate={getTrades} />
+              ))}
+            </div>
+          </>
+        ) : (<div className="noTradesText"><div className="tText">Looks like you have no trades. Check out the community page to view other people&apos;s collections!</div></div>)}
+      </div>
+
     </>
 
   );
