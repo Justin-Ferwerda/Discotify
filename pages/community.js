@@ -30,7 +30,10 @@ function Community() {
   };
 
   const getUsersandArtists = () => {
-    getAllUsers().then(setUsers);
+    getAllUsers().then((response) => {
+      const otherUsers = response.filter((userObj) => userObj.uid !== user.uid);
+      setUsers(otherUsers);
+    });
     getArtistNames(user.uid).then(setArtists);
   };
 
@@ -54,7 +57,7 @@ function Community() {
           <Form onSubmit={handleSubmit}>
             <FloatingLabel controlId="floatingSelect" label="Artist">
               <Form.Select aria-label="Artist" name="artistName" onChange={handleChange} className="mb-3" value={formInput?.artistName} required>
-                <option value="">Select an Artist</option>
+                <option value="">Select an Artist From Your Collection</option>
                 {artists?.map((artist) => (
                   <option key={artist} value={artist}>
                     {artist}

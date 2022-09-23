@@ -61,11 +61,11 @@ function TradeCard({ tradeObj, onUpdate }) {
       <SyncAltIcon />
       <AlbumCard key={offer?.albumFirebaseKey} src={offer?.recordImage} albumObj={offer} router={router.asPath} />
       {tradeObj.uid === user.uid ? (
-        <div>
+        <div className="trade-btn-container">
           <Button className="rescind-trade-btn" onClick={deleteThisTrade}>Rescind Trade</Button>
         </div>
       ) : (
-        <div>
+        <div className="trade-btn-container">
           <Button className="approve-trade-btn" onClick={approveThisTrade}>Approve Trade</Button>
           <Button className="deny-trade-btn" onClick={deleteThisTrade}>Deny Trade</Button>
         </div>
