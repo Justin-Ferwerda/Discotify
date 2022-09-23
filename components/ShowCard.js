@@ -18,7 +18,7 @@ function ShowCard({ showObject }) {
           <Card.Title>
             {dateFormat()}
           </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{showObject.venue.name}</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted text-wrap">{showObject.venue.name}</Card.Subtitle>
           <Card.Text>
             {showObject.venue.location}
           </Card.Text>
