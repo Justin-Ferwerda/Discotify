@@ -50,7 +50,7 @@ function AlbumCard({
   };
 
   return (
-    <div className="albumCard">
+    <div className="albumCard border border-dark">
       <Flippy
         flipOnHover={false}
         flipOnClick

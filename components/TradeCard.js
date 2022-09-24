@@ -56,7 +56,7 @@ function TradeCard({ tradeObj, onUpdate }) {
   }, [tradeObj]);
 
   return (
-    <div className="tradeCard">
+    <div className="tradeCard border border-dark">
       <AlbumCard key={request?.albumFirebaseKey} src={request?.recordImage} albumObj={request} router={router.asPath} />
       <SyncAltIcon />
       <AlbumCard key={offer?.albumFirebaseKey} src={offer?.recordImage} albumObj={offer} router={router.asPath} />
