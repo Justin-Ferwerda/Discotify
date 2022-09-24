@@ -163,6 +163,14 @@ img {
   background-color: #fff6ea;
   margin-bottom: 5px;
   margin-top: 5px;
+  margin-right: 5px;
+}
+
+.tradeRequestContainer {
+  display: inline-block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .welcome-message {
