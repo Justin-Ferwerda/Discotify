@@ -134,6 +134,13 @@ img {
   margin-right: 10px;
 }
 
+.userCardContainer {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: nowrap;
+  height: 650px;
+}  
+
 .modalHeader {
   background-color: #fff6ea;
 }
