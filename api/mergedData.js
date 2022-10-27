@@ -13,7 +13,9 @@ const getUsersWishList = async (uid) => {
 const getArtistNames = async (uid) => {
   const userAlbums = await getUserAlbums(uid);
   const artistNames = userAlbums.map((album) => album.artistName);
-  return artistNames;
+  const uniqueNames = new Set(artistNames);
+  const uniqueArray = [...uniqueNames];
+  return uniqueArray;
 };
 
 const getUserGenres = async (uid) => {
